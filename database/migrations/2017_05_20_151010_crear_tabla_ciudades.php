@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CrearTablaCiudades extends Migration
 {
     /**
-     * Run the migrations.
+     * esta tabla sirve para ciudades
      *
      * @return void
      */

@@ -18,6 +18,10 @@ class CrearTablaPersonas extends Migration
             $table->string('paterno')->nullable();
             $table->string('materno')->nullable();
             $table->string('nombres');
+            $table->unsignedInteger('id_arma');
+            $table->unsignedInteger('id_grado');
+            $table->unsignedInteger('id_especialidad');
+            $table->unsignedInteger('id_unidad');
             $table->string('exp', 10);
             $table->date('fechanacimiento');
             $table->unsignedInteger('id_sangre');
@@ -37,6 +41,22 @@ class CrearTablaPersonas extends Migration
                 ->onUpdate('cascade');
             $table->foreign('id_estadocivil')
                 ->references('id')->on('estadosciviles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('id_grado')
+                ->references('id')->on('grados')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('id_arma')
+                ->references('id')->on('armas')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('id_especialidad')
+                ->references('id')->on('especialidades')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('id_unidad')
+                ->references('id')->on('unidades')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
