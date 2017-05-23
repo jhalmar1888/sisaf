@@ -1,5 +1,4 @@
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
@@ -60,15 +59,18 @@
                     <i class="fa fa-sign-in"></i>
                 </div>
             </div>
-            <!-- end login-header -->
-            <!-- begin login-content -->
+
+        <!-- end login-header -->
+        <!-- begin login-content -->
             <div class="login-content">
-                <form action="index.html" method="POST" class="margin-bottom-0">
+                @include('partials.errors')
+                {!! Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class' => 'margin-bottom-0']) !!}
+
                     <div class="form-group m-b-15">
-                        <input type="text" class="form-control input-lg" placeholder="Usuario" required />
+                        {!! Form::text('usuario', old('usuario'), ['class' => 'form-control input-lg', 'placeholder' => 'Usuario']) !!}
                     </div>
                     <div class="form-group m-b-15">
-                        <input type="password" class="form-control input-lg" placeholder="Contrasena" required />
+                        {!! Form::password('password', ['class' => 'form-control input-lg', 'placeholder' => 'Contraseña']) !!}
                     </div>
                     {{--<div class="checkbox m-b-30">--}}
                     {{--<label>--}}
@@ -85,7 +87,7 @@
                     <p class="text-center">
                         &copy; EMI All Reserved 2017
                     </p>
-                </form>
+                {{ Form::close() }}
             </div>
             <!-- end login-content -->
         </div>
