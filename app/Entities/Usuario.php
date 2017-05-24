@@ -11,4 +11,14 @@ class Usuario extends Authenticatable
 
     protected $table = 'usuarios';
     public $timestamps = false;
+
+    public function rol()
+    {
+        return $this->hasOne(Rol::class, 'id', 'id_rol');
+    }
+
+    public function modulo()
+    {
+        return $this->hasOne(Modulo::class, 'id', 'id_modulo');
+    }
 }

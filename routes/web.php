@@ -28,12 +28,10 @@ Route::post('cerrar-sesion', [
 // aca adentro iran las rutas que necesiten autenticacion
 Route::group(['middleware' => 'auth'], function (){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-    Route::get('home', [
+    Route::get('/', [
         'uses'  => 'HomeController@index',
         'as'    => 'home.home'
     ]);
+
+
 });

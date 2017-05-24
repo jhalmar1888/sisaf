@@ -98,43 +98,16 @@ return [
     */
     'attributes' => [
         'username'      => 'Usuario',
-        'password'      => 'Contraseña',
-        'ci'            => 'Carnet de Identidad',
-        'city_id'       => 'Expedido',
-        'flastname'     => 'Apellido Paterno',
-        'slastname'     => 'Apellido Materno',
-        'name'          => 'Nombres',
-        'birthday'      => 'Fecha de Nacimiento',
-        'blood'         => 'Tipo de Sangre',
-        'gender'        => 'Género',
-        'civil_status_id' => 'Estado Civil',
-        'phone'         => 'Teléfono',
-        'street'        => 'Domicilio',
-        'grade'         => 'Grado',
-        'detailgrade'   => 'Detalle del Grado',
-        'specialty'     => 'Especialidad',
-        'detailspecialty' => 'Detalle de la Especialidad',
-        'unity_id'      => 'Unidad',
-        'jurisdiction_id'   => 'Jurisdicción',
-        'subunity_id'   => 'Unidad Dependiente',
-        'codboleta'     => 'Código de Boleta',
-        'tin'           => 'TIN',
-        'cossmil'       => 'Cossmil',
-        'afp'           => 'Aportes AFP',
-        'promocion'     => 'Promoción',
-        'codfile'       => 'Código de Legajo Personal',
-        'position_id'   => 'Cargo',
-        'statepart_id'  => 'Parte',
-        'grade_id'      => 'Grado',
-        'specialty_id'  => 'Especialidad',
-        'course'        => 'Curso',
-        'register'      => 'Código',
-        'cat'           => 'Categoría',
-        'elon'          => 'Escalón',
-        'register1'     => 'Matrícula',
-        'names'         => 'Apellidos y Nombres',
-        'comment'       => 'Detalle',
-        'day'          => 'Fecha'
+
+
+        // para contabilidad
+
+        'cont_id_grado'      => 'Grado',
+
+
+
+        // para rrhh
+        'rrhh_id_grado'     => 'grados'
     ],
 ];
 

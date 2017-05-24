@@ -12,6 +12,10 @@ class ModuloSeeder extends Seeder
     public function run()
     {
         factory(\App\Entities\Modulo::class)->create([
+            'modulo' => 'Administrador'
+        ]);
+
+        factory(\App\Entities\Modulo::class)->create([
             'modulo' => 'Tesoreria'
         ]);
 
