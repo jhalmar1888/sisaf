@@ -19,6 +19,7 @@ class CrearTableUsuarios extends Migration
             $table->string('usuario');
             $table->string('nombre');
             $table->string('password');
+            $table->rememberToken();
             $table->unsignedInteger('id_modulo');
             $table->unsignedInteger('id_rol');
 
