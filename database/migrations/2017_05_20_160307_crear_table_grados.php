@@ -16,6 +16,7 @@ class CrearTableGrados extends Migration
         Schema::create('grados', function (Blueprint $table) {
             $table->increments('id');
             $table->string('grados');
+            $table->boolean('activo')->default(true);
         });
     }
 
