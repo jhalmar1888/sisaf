@@ -22,6 +22,7 @@ class CrearTableUsuarios extends Migration
             $table->rememberToken();
             $table->unsignedInteger('id_modulo');
             $table->unsignedInteger('id_rol');
+            $table->boolean('activo')->default(true);
 
             $table->foreign('id_modulo')
                 ->references('id')->on('modulos')

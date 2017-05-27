@@ -97,8 +97,12 @@ return [
     |
     */
     'attributes' => [
-        'username'      => 'Usuario',
-
+        'password'   => 'Contraseña',
+        // para el superadmin
+        'admnombres'        => 'Apellidos y Nombres',
+        'admusuario'        => 'Usuario',
+        'adm_id_modulo'     => 'Módulos',
+        'adm_id_rol'        => 'Roles',
 
         // para contabilidad
 
@@ -107,7 +111,9 @@ return [
 
 
         // para rrhh
-        'rrhh_id_grado'     => 'grados'
+        'rrhh_id_grado'     => 'grados',
+
+
     ],
 ];
 

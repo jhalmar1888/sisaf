@@ -2,8 +2,8 @@
     @include('tesoreria.menu')
 @endif
 
-@if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'adminstrador')
-    @include('administrador.menu.menu')
+@if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Administrador')
+    @include('administrador.menu')
 @endif
 
 @if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Contabilidad')

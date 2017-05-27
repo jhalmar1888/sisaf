@@ -21,4 +21,16 @@ class Usuario extends Authenticatable
     {
         return $this->hasOne(Modulo::class, 'id', 'id_modulo');
     }
+
+    public function getEstadoAttribute()
+    {
+        if ($this->activo == true) return 'Activado';
+        else return 'Inactivo';
+    }
+
+    public static function habilitacion($numero)
+    {
+        if ($numero == 1) return 'Activado';
+        else return 'Inactivo';
+    }
 }

@@ -12,17 +12,17 @@
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
-    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/animate.min.css" rel="stylesheet" />
-    <link href="css/style.min.css" rel="stylesheet" />
-    <link href="css/style-responsive.min.css" rel="stylesheet" />
-    <link href="css/theme/default.css" rel="stylesheet" id="theme" />
+    {{ Html::style('plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}
+    {{ Html::style('plugins/bootstrap/css/bootstrap.min.css') }}
+    {{ Html::style('plugins/font-awesome/css/font-awesome.min.css') }}
+    {{ Html::style('css/animate.min.css') }}
+    {{ Html::style('css/style.min.css') }}
+    {{ Html::style('css/style-responsive.min.css') }}
+    {{ Html::style('css/theme/default.css') }}
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="plugins/pace/pace.min.js"></script>
+    {{ Html::script('plugins/pace/pace.min.js') }}
     <!-- ================== END BASE JS ================== -->
 </head>
 <body>
@@ -96,21 +96,21 @@
 <!-- end page container -->
 
 <!-- ================== BEGIN BASE JS ================== -->
-<script src="plugins/jquery/jquery-1.9.1.min.js"></script>
-<script src="plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-<script src="plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+{{ Html::script('plugins/jquery/jquery-1.9.1.min.js') }}
+{{ Html::script('plugins/jquery/jquery-migrate-1.1.0.min.js') }}
+{{ Html::script('plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}
+{{ Html::script('plugins/bootstrap/js/bootstrap.min.js') }}
 <!--[if lt IE 9]>
-<script src="crossbrowserjs/html5shiv.js"></script>
-<script src="crossbrowserjs/respond.min.js"></script>
-<script src="crossbrowserjs/excanvas.min.js"></script>
+{{ Html::script('crossbrowserjs/html5shiv.js') }}
+{{ Html::script('crossbrowserjs/respond.min.js') }}
+{{ Html::script('crossbrowserjs/excanvas.min.js') }}
 <![endif]-->
-<script src="plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="plugins/jquery-cookie/jquery.cookie.js"></script>
+{{ Html::script('plugins/slimscroll/jquery.slimscroll.min.js') }}
+{{ Html::script('plugins/jquery-cookie/jquery.cookie.js') }}
 <!-- ================== END BASE JS ================== -->
 
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-<script src="js/apps.min.js"></script>
+{{ Html::script('js/apps.min.js') }}
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>
