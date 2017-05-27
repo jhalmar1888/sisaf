@@ -98,6 +98,9 @@ return [
     */
     'attributes' => [
         'password'   => 'Contraseña',
+        'grado'     => 'Grado',
+
+
         // para el superadmin
         'admnombres'        => 'Apellidos y Nombres',
         'admusuario'        => 'Usuario',

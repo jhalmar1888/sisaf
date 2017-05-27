@@ -18,8 +18,8 @@
                 <span>Grados</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="index.html">Mostrar Grados</a></li>
-                <li><a href="index_v2.html">Agregar Grados</a></li>
+                <li><a href="{{ route('superadmin.getGrados') }}">Mostrar Grados</a></li>
+                <li><a href="{{ route('superadmin.getAgregarGrado') }}">Agregar Grados</a></li>
             </ul>
         </li>
         <li class="has-sub">

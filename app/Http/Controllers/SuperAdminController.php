@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Grado;
 use App\Entities\Modulo;
 use App\Entities\Rol;
 use App\Entities\Usuario;
@@ -112,5 +113,69 @@ class SuperAdminController extends Controller
         Alert::message('Usuario modificado exitósamnte', 'success');
 
         return redirect()->route('superadmin.getUsuarios');
+    }
+
+    public function getGrados()
+    {
+        $grados = Grado::orderBy('grados')
+            ->paginate(30);
+
+        return view('administrador.grados.grados', compact('grados'));
+    }
+
+    public function getAgregarGrado()
+    {
+        return view('administrador.grados.agregargrado');
+    }
+
+    public function postAgregarGrado(Request $request)
+    {
+        $this->validate($request, [
+            'grado' => 'required|min:1|max:10|unique:grados,grados'
+        ]);
+
+        $nuevo_grado = new Grado;
+        $nuevo_grado->grados = $request->grado;
+        $nuevo_grado->save();
+
+        Alert::message('Grado agregado exitósamnte', 'success');
+
+        return redirect()->route('superadmin.getGrados');
+    }
+
+    public function getHabilitacionGrado($id_grado)
+    {
+        $grado = Grado::findOrFail($id_grado);
+        if ($grado->activo){
+            $grado->activo = false;
+            Alert::message('Grado desactivado exitósamnte', 'danger');
+        } else {
+            $grado->activo = true;
+            Alert::message('Grado activado exitósamnte', 'success');
+        }
+        $grado->save();
+
+        return redirect()->route('superadmin.getGrados');
+    }
+
+    public function getEditarGrado($id_grado)
+    {
+        $grado = Grado::findOrFail($id_grado);
+        return view('administrador.grados.modificargrado', compact('grado'));
+    }
+
+    public function putEditarGrado(Request $request)
+    {
+        $this->validate($request, [
+            'grado' => ['required', 'min:1', 'max:10', Rule::unique('grados', 'grados')->ignore($request->grado, 'grados')]
+        ]);
+
+        $nuevo_grado = Grado::findOrFail($request->antiguo_id);
+        $nuevo_grado->grados = $request->grado;
+        $nuevo_grado->save();
+
+        Alert::message('Grado actualizado exitósamnte', 'success');
+
+        return redirect()->route('superadmin.getGrados');
     }
 }
