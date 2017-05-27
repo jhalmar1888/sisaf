@@ -11,9 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Rutas de autenticacion o inicio de sesion
+Route::get('inicio-de-sesion', [
+    'uses'  => 'Auth\LoginController@showLoginForm',
+    'as'    => 'login'
+]);
+Route::post('inicio-de-sesion', [
+    'uses'  => 'Auth\LoginController@login',
+    'as'    => 'login'
+]);
+Route::post('cerrar-sesion', [
+    'uses'  => 'Auth\LoginController@logout',
+    'as'    => 'logout'
+]);
+
+// aca adentro iran las rutas que necesiten autenticacion
+Route::group(['middleware' => 'auth'], function (){
+
+    Route::get('/', [
+        'uses'  => 'HomeController@index',
+        'as'    => 'home.home'
+    ]);
+
+    // para tesoreria
+
+    /** @noinspection PhpIncludeInspection */
+    require base_path('routes/tesoreria.php');
+
 });
-
-
-Route::get('/home', 'HomeController@index')->name('home');

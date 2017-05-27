@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,6 +19,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::user()->modulo->modulo  == 'Tesoreria') {
+            return view('home.hometesoreria');
+        }
+
+        if (Auth::user()->modulo->modulo  == 'Administrador') {
+            return view('home.homeadministrador');
+        }
+
+        if (Auth::user()->modulo->modulo  == 'Contabilidad') {
+            return view('home.homecontabilidad');
+        }
+
+        if (Auth::user()->modulo->modulo  == 'RR.HH.') {
+            return view('home.homerrhh');
+        }
     }
 }

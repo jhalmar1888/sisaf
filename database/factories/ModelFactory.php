@@ -12,13 +12,22 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
-
+$factory->define(\App\Entities\Usuario::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'usuario' => $faker->unique()->userName,
+        'nombre' => $faker->name,
+        'password' => bcrypt('secretos'),
     ];
+});
+
+$factory->define(\App\Entities\Ciudad::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Modulo::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Rol::class, function (\Faker\Generator $generator){
+    return [];
 });
