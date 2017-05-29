@@ -41,8 +41,9 @@
                 <span>Armas</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="index.html">Mostrar Armas</a></li>
-                <li><a href="index_v2.html">Agregar Armas</a></li>
+                <li><a href="{{ route('superadmin.getArmas') }}">Mostrar Armas</a></li>
+                <li><a href="{{ route('superadmin.getAgregarArma') }}">Agregar Arma</a></li>
+
             </ul>
         </li>
         <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Arma;
 use App\Entities\Especialidad;
 use App\Entities\Grado;
 use App\Entities\Modulo;
@@ -182,7 +183,6 @@ class SuperAdminController extends Controller
         return redirect()->route('superadmin.getGrados');
     }
 
-
     // para especialidades
 
     public function getEspecialidades()
@@ -249,7 +249,71 @@ class SuperAdminController extends Controller
         return redirect()->route('superadmin.getEspecialidades');
     }
 
+// para armas
 
+    public function getArmas()
+    {
+        $armas = Arma::orderBy('armas')
+            ->paginate(30);
+
+        return view('administrador.armas.armas', compact('armas'));
+    }
+
+    public function getAgregarArma()
+    {
+        return view('administrador.armas.agregararma');
+    }
+
+    public function postAgregarArma(Request $request)
+    {
+        $this->validate($request, [
+            'arma' => 'required|min:1|max:10|unique:armas,armas'
+        ]);
+
+        $nueva_arma = new Arma;
+        $nueva_arma->armas = $request->arma;
+        $nueva_arma->save();
+
+        Alert::message('Arma agregada exitósamnte', 'success');
+
+        return redirect()->route('superadmin.getArmas');
+    }
+
+    public function getHabilitacionArma($id_arma)
+    {
+        $arma = Arma::findOrFail($id_arma);
+        if ($arma->activo){
+            $arma->activo = false;
+            Alert::message('Arma desactivada exitósamnte', 'danger');
+        } else {
+            $arma->activo = true;
+            Alert::message('Arma activada exitósamnte', 'success');
+        }
+        $arma->save();
+
+        return redirect()->route('superadmin.getArmas');
+    }
+
+    public function getEditarArma($id_arma)
+    {
+        $arma = Arma::findOrFail($id_arma);
+        return view('administrador.armas.modificararmas', compact('arma'));
+    }
+
+    public function putEditarArma(Request $request)
+    {
+        $this->validate($request, [
+            'arma' => ['required', 'min:1', 'max:10', Rule::unique('armas', 'armas')->ignore($request->arma, 'armas')]
+        ]);
+
+        $nueva_arma = Arma::findOrFail($request->antiguo_id);
+        $nueva_arma->armas = $request->arma;
+        $nueva_arma->save();
+
+        Alert::message('Arma actualizada exitósamnte', 'success');
+
+        return redirect()->route('superadmin.getArmas');
+    }
 }
 
 
