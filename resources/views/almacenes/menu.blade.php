@@ -4,7 +4,7 @@
             <a href="javascript:;">
                 <b class="caret pull-right"></b>
                 <i class="fa fa-users"></i>
-                <span>Usarios</span>
+                <span>Partidas</span>
             </a>
             <ul class="sub-menu">
                 <li><a href="index.html">Agregar Usuarios</a></li>
@@ -15,21 +15,21 @@
             <a href="javascript:;">
                 <b class="caret pull-right"></b>
                 <i class="fa fa-users"></i>
-                <span>Usarios</span>
+                <span>Movimientos</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="index.html">Agregar Usuarios</a></li>
-                <li><a href="index_v2.html">Borrar Usuario</a></li>
+                <li><a href="index.html">Ingreso de Material</a></li>
+                <li><a href="index_v2.html">Salida de Material</a></li>
             </ul>
         </li>
         <li class="has-sub">
             <a href="javascript:;">
                 <b class="caret pull-right"></b>
                 <i class="fa fa-users"></i>
-                <span>Usarios</span>
+                <span>Reportes</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="index.html">Agregar Usuarios</a></li>
+                <li><a href="index.html">Reportes de Almacenes</a></li>
                 <li><a href="index_v2.html">Borrar Usuario</a></li>
             </ul>
         </li>

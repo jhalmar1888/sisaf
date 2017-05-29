@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('titulopagina')
-    <h4>Sistema Financiero Administrativo - Administrador del Sistema</h4>
+    <h4>Sistema  Administrativo Financiero - Encargado de Almacenes</h4>
 @endsection
 
 @section('rutas')
@@ -13,7 +13,7 @@
 @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Agregar Usuario</h1>
+    <h1 class="page-header">Agregar Articulos</h1>
 @endsection
 
 @section('contenido')

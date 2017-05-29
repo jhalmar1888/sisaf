@@ -61,3 +61,5 @@ Route::put('modificar-grado', [
     'uses'  => 'SuperAdminController@putEditarGrado',
     'as'    => 'superadmin.putEditarGrado'
 ]);
+
+// para especialidades
