@@ -29,8 +29,9 @@
                 <span>Especialidades</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="index.html">Mostrar Especialidades</a></li>
-                <li><a href="index_v2.html">Agregar Especialidades</a></li>
+                <li><a href="{{ route('superadmin.getEspecialidades') }}">Mostrar Especialidades</a></li>
+                <li><a href="{{ route('superadmin.getAgregarEspecialidad') }}">Agregar Especialidad</a></li>
+
             </ul>
         </li>
         <li class="has-sub">

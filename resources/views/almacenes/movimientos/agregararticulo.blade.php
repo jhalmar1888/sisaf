@@ -13,7 +13,7 @@
 @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Agregar Articulos</h1>
+    <h1 class="page-header">Agregar Usuario</h1>
 @endsection
 
 @section('contenido')
