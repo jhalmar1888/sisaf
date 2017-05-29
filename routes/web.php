@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function (){
         'as'    => 'home.home'
     ]);
 
-    // para el super administrador
+    // para superadmin
 
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/superadmin.php');
@@ -42,5 +42,10 @@ Route::group(['middleware' => 'auth'], function (){
 
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/tesoreria.php');
+
+    // para tesoreria
+
+    /** @noinspection PhpIncludeInspection */
+    require base_path('routes/almacenes.php');
 
 });

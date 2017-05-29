@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Especialidad;
 use App\Entities\Grado;
 use App\Entities\Modulo;
 use App\Entities\Rol;
@@ -115,6 +116,8 @@ class SuperAdminController extends Controller
         return redirect()->route('superadmin.getUsuarios');
     }
 
+    // para grados
+
     public function getGrados()
     {
         $grados = Grado::orderBy('grados')
@@ -179,4 +182,77 @@ class SuperAdminController extends Controller
         return redirect()->route('superadmin.getGrados');
     }
 
+<<<<<<< HEAD
+=======
+
+    // para especialidades
+
+    public function getEspecialidades()
+    {
+        $especialidades = Especialidad::orderBy('especialidades')
+            ->paginate(30);
+
+        return view('administrador.especialidades.especialidades', compact('especialidades'));
+    }
+
+    public function getAgregarEspecialidad()
+    {
+        return view('administrador.especialidades.agregarespecialidad');
+    }
+
+    public function postAgregarEspecialidad(Request $request)
+    {
+        $this->validate($request, [
+            'especialidad' => 'required|min:1|max:10|unique:especialidades,especialidades'
+        ]);
+
+        $nuevo_especialidad = new Especialidad;
+        $nuevo_especialidad->especialidades = $request->especialidad;
+        $nuevo_especialidad->save();
+
+        Alert::message('Especialidad agregado exitósamnte', 'success');
+
+        return redirect()->route('superadmin.getEspecialidades');
+    }
+
+    public function getHabilitacionEspecialidad($id_especialidad)
+    {
+        $especialidad = Especialidad::findOrFail($id_especialidad);
+        if ($especialidad->activo){
+            $especialidad->activo = false;
+            Alert::message('Especialidad desactivado exitósamnte', 'danger');
+        } else {
+            $especialidad->activo = true;
+            Alert::message('Especialidad activado exitósamnte', 'success');
+        }
+        $especialidad->save();
+
+        return redirect()->route('superadmin.getEspecialidades');
+    }
+
+    public function getEditarEspecialidad($id_especialidad)
+    {
+        $especialidad = Especialidad::findOrFail($id_especialidad);
+        return view('administrador.especialidades.modificarespecialidades', compact('especialidad'));
+    }
+
+    public function putEditarEspecialidad(Request $request)
+    {
+        $this->validate($request, [
+            'especialidad' => ['required', 'min:1', 'max:10', Rule::unique('especialidades', 'especialidades')->ignore($request->especialidad, 'especialidades')]
+        ]);
+
+        $nuevo_especialidad = Especialidad::findOrFail($request->antiguo_id);
+        $nuevo_especialidad->especialidades = $request->especialidad;
+        $nuevo_especialidad->save();
+
+        Alert::message('Especialidad actualizado exitósamnte', 'success');
+
+        return redirect()->route('superadmin.getEspecialidades');
+    }
+
+
+>>>>>>> bd16f3eddb0fd4efce23bfe27cf42c53e820a983
 }
+
+

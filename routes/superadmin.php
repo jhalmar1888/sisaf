@@ -62,13 +62,15 @@ Route::put('modificar-grado', [
     'as'    => 'superadmin.putEditarGrado'
 ]);
 
-/// para especialidades
+
+/// para Especialidades
 
 Route::get('especialidades', [
     'uses'  => 'SuperAdminController@getEspecialidades',
     'as'    => 'superadmin.getEspecialidades'
 ]);
 
+<<<<<<< HEAD
 Route::get('agregar-grado', [
     'uses'  => 'SuperAdminController@getAgregarGrado',
     'as'    => 'superadmin.getAgregarGrado'
@@ -93,3 +95,29 @@ Route::put('modificar-grado', [
     'uses'  => 'SuperAdminController@putEditarGrado',
     'as'    => 'superadmin.putEditarGrado'
 ]);
+=======
+Route::get('agregar-especialidad', [
+    'uses'  => 'SuperAdminController@getAgregarEspecialidad',
+    'as'    => 'superadmin.getAgregarEspecialidad'
+]);
+
+Route::post('agregar-especialidades', [
+    'uses'  => 'SuperAdminController@postAgregarEspecialidad',
+    'as'    => 'superadmin.postAgregarEspecialidad'
+]);
+
+Route::get('habilitacion-especialidad/{id_especialidad}', [
+    'uses'  => 'SuperAdminController@getHabilitacionEspecialidad',
+    'as'    => 'superadmin.getHabilitacionEspecialidad'
+]);
+
+Route::get('modificar-especialidad{id_especialidad}', [
+    'uses'  => 'SuperAdminController@getEditarEspecialidad',
+    'as'    => 'superadmin.getEditarEspecialidad'
+]);
+
+Route::put('modificar-especialidad', [
+    'uses'  => 'SuperAdminController@putEditarEspecialidad',
+    'as'    => 'superadmin.putEditarEspecialidad'
+]);
+>>>>>>> bd16f3eddb0fd4efce23bfe27cf42c53e820a983
