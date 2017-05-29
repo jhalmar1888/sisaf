@@ -178,4 +178,5 @@ class SuperAdminController extends Controller
 
         return redirect()->route('superadmin.getGrados');
     }
+
 }
