@@ -93,3 +93,34 @@ Route::put('modificar-especialidad', [
     'uses'  => 'SuperAdminController@putEditarEspecialidad',
     'as'    => 'superadmin.putEditarEspecialidad'
 ]);
+/// para armas
+
+Route::get('armas', [
+    'uses'  => 'SuperAdminController@getArmas',
+    'as'    => 'superadmin.getArmas'
+]);
+
+Route::get('agregar-arma', [
+    'uses'  => 'SuperAdminController@getAgregarArma',
+    'as'    => 'superadmin.getAgregarArma'
+]);
+
+Route::post('agregar-armas', [
+    'uses'  => 'SuperAdminController@postAgregarArma',
+    'as'    => 'superadmin.postAgregarArma'
+]);
+
+Route::get('habilitacion-arma/{id_arma}', [
+    'uses'  => 'SuperAdminController@getHabilitacionArma',
+    'as'    => 'superadmin.getHabilitacionArma'
+]);
+
+Route::get('modificar-arma{id_arma}', [
+    'uses'  => 'SuperAdminController@getEditarArma',
+    'as'    => 'superadmin.getEditarArma'
+]);
+
+Route::put('modificar-arma', [
+    'uses'  => 'SuperAdminController@putEditarArma',
+    'as'    => 'superadmin.putEditarArma'
+]);
