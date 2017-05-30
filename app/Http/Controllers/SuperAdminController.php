@@ -183,7 +183,6 @@ class SuperAdminController extends Controller
         return redirect()->route('superadmin.getGrados');
     }
 
-
     // para especialidades
 
     public function getEspecialidades()
@@ -315,7 +314,6 @@ class SuperAdminController extends Controller
 
         return redirect()->route('superadmin.getArmas');
     }
-
 }
 
 
