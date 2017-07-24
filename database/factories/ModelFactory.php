@@ -31,3 +31,12 @@ $factory->define(\App\Entities\Modulo::class, function (\Faker\Generator $genera
 $factory->define(\App\Entities\Rol::class, function (\Faker\Generator $generator){
     return [];
 });
+$factory->define(\App\Entities\TipoUnidad::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Partida::class, function (Faker\Generator $generator){
+    return [
+        'partida' => $generator->unique()->numberBetween($min=10, $max=10000)
+    ];
+});

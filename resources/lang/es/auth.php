@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Estos datos no coinciden con los registros de la Armada Boliviana.',
+    'failed' => 'Estos datos no coinciden con los registros del sitema.',
     'throttle' => 'Muchos intentos fallidos. Por favor inténtalo de nuevo en :seconds segundos.',
 
 ];

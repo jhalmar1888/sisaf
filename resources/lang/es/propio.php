@@ -7,6 +7,6 @@
  */
 
 return [
-    'titulo'        => 'Sistema de Administración de Recursos Humanos "Kairós"',
-    'autor'         => 'TF. CGON. Charlie Seoane Sánchez'
+    'titulo'        => 'Sistema Administrativo Financiero"',
+    'autor'         => 'Charlie Seoane Sánchez'
 ];
