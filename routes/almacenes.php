@@ -15,6 +15,11 @@ Route::get('agregar-articulos', [
     'as'    => 'almacen.getAgregarArticulo'
 ]);
 
+Route::post('agregar-articulos', [
+    'uses'  => 'AlmacenController@postAgregarArticulo',
+    'as'    => 'almacen.postAgregarArticulo'
+]);
+
 
 
 

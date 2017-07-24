@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Entities\KardexCentral;
 use App\Entities\Material;
+use App\Entities\Partida;
+use App\Entities\TipoUnidad;
 use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 
 class AlmacenController extends Controller
 {
@@ -98,5 +101,43 @@ class AlmacenController extends Controller
         Alert::message('Usuario modificado exitósamnte', 'success');
 
         return redirect()->route('superadmin.getUsuarios');
+    }
+
+    public function getAgregarArticulo()
+    {
+        $partidas = Partida::all()
+            ->pluck('partida', 'id');
+
+        $tipounidad = TipoUnidad::all()
+            ->pluck('tipo', 'id');
+
+        return view('almacenes.movimientos.agregararticulo', compact('partidas', 'tipounidad'));
+    }
+
+    public function postAgregarArticulo(Request $request)
+    {
+//        dd($request->all());
+        $this->validate($request, [
+            'almcodigo'     => 'required',
+            'almid_partida' => 'required',
+            'almdescripcion'=> 'required',
+            'almtipounidad' => 'required',
+            'almpusf'       => 'required',
+            'almpucf'       => 'required'
+        ]);
+
+        $material = new Material;
+
+        $material->codigo = $request->almcodigo;
+        $material->id_partida = $request->almid_partida;
+        $material->descripcion = $request->almdescripcion;
+        $material->id_tipounidad = $request->almtipounidad;
+        $material->pusf = $request->almpusf;
+        $material->pucf = $request->almpucf;
+        $material->save();
+
+        Alert::message('Artículo agergado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getArticulos');
     }
 }

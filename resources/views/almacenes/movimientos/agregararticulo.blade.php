@@ -26,42 +26,48 @@
                 </div>
                 @include('partials.errors')
                 <div class="panel-body panel-form">
-                    {{ Form::open(['route' => 'superadmin.postAgregarUsuario', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
+                    {{ Form::open(['route' => 'almacen.postAgregarArticulo', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
 
                     <div class="form-group">
-                        {{ Form::label('admusuario', 'Usuario:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('almcodigo', 'Código:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('admusuario', old('admusuario'), ['class' => 'form-control', 'placeholder' => 'Nombre de Usuario']) }}
+                            {{ Form::text('almcodigo', old('almcodigo'), ['class' => 'form-control', 'placeholder' => 'Código']) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('admnombres', 'Apellidos y Nombres:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('almid_partida', 'Partida:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('admnombres', old('admnombres'), ['class' => 'form-control', 'placeholder' => 'Apellidos y Nombres']) }}
+                            {{ Form::select('almid_partida', $partidas, ['class' => 'form-control', 'placeholder' => 'Partida']) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('password', 'Contraseña:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('almdescripcion', 'Descripcion:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('password', old('password'), ['class' => 'form-control', 'placeholder' => 'Contraseña']) }}
+                            {{ Form::text('almdescripcion', old('almdescripcion'), ['class' => 'form-control', 'placeholder' => 'Descripcion']) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('adm_id_modulo', 'Módulo:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('almtipounidad', 'Tipo:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::select('adm_id_modulo', $modulos, null , ['class' => 'form-control', 'placeholder' => 'Selecciona un módulo']) }}
+                            {{ Form::select('almtipounidad', $tipounidad, ['class' => 'form-control', 'placeholder' => 'Tipo de Unidad']) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('adm_id_rol', 'Rol:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('almpusf', 'Precio Unidad s/factura:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::select('adm_id_rol', $roles, null , ['class' => 'form-control', 'placeholder' => 'Selecciona un rol']) }}
+                            {{ Form::text('almpusf', old('almpusf'), ['class' => 'form-control', 'placeholder' => '0.00']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('almpucf', 'Precio Unidad c/factura:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almpucf', old('almpucf'), ['class' => 'form-control', 'placeholder' => '0.00']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('', '', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::submit('Guardar Usuario', ['class' => 'btn btn-primary']) }}
+                            {{ Form::submit('Guardar Artículo', ['class' => 'btn btn-primary']) }}
                         </div>
                     </div>
                     {{ Form::close() }}

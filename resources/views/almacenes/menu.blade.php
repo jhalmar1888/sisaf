@@ -28,6 +28,7 @@
             </a>
             <ul class="sub-menu">
                 <li><a href="{{ route('almacen.getArticulos') }}">Ver lista de Articulos</a></li>
+                <li><a href="{{ route('almacen.getAgregarArticulo') }}">Agregar Articulos</a></li>
                 <li><a href="{{ route('almacen.getAlmacenes') }}">Ver Almacenes</a></li>
                 <li><a href="index.html">Ingreso de Articulos</a></li>
                 <li><a href="index_v2.html">Salida de Articulos</a></li>

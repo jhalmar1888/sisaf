@@ -117,6 +117,15 @@ return [
         'rrhh_id_grado'     => 'grados',
 
 
+        // para almacenes
+
+        'almcodigo'         => 'Código',
+        'almid_partida'     => 'Partida',
+        'almtipounidad'     => 'Tipo',
+        'almpusf'           => 'Precio Unidad s/factura',
+        'almpucf'           => 'Precio Undiad c/factura',
+        'almdescripcion'    => 'Descripcion'
+
     ],
 ];
 
