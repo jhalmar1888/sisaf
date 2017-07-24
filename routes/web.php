@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function (){
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/tesoreria.php');
 
-    // para tesoreria
+    // para almacenes
 
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/almacenes.php');
