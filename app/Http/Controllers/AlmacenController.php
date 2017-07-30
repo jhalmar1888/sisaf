@@ -9,6 +9,7 @@ use App\Entities\Material;
 use App\Entities\Partida;
 use App\Entities\Proveedor;
 use App\Entities\TipoUnidad;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
@@ -102,7 +103,7 @@ class AlmacenController extends Controller
         $compingreso = new ComprobanteIngreso;
         $compingreso->id_proveedor = $request->almid_proveedor;
         $compingreso->nfactura = $request->almnfactura;
-        $compingreso->fecha = $request->almfecha;
+        $compingreso->fecha = Carbon::createFromFormat('d/m/Y')->format('Y-m-d');
         $compingreso->contactoproveedor = $request->almcontacto;
         $compingreso->save();
 
@@ -187,7 +188,7 @@ class AlmacenController extends Controller
         $proveedor->proveedor = $request->almproveedor;
         $proveedor->save();
 
-        Alert::message('Proveedor agergado exitósamnte', 'success');
+        Alert::message('Proveedor agergado exitósamente', 'success');
 
         return redirect()->route('almacen.getProveedores');
     }
