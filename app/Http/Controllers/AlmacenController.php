@@ -9,7 +9,6 @@ use App\Entities\Material;
 use App\Entities\Partida;
 use App\Entities\Proveedor;
 use App\Entities\TipoUnidad;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
@@ -103,7 +102,7 @@ class AlmacenController extends Controller
         $compingreso = new ComprobanteIngreso;
         $compingreso->id_proveedor = $request->almid_proveedor;
         $compingreso->nfactura = $request->almnfactura;
-        $compingreso->fecha = Carbon::createFromFormat('d/m/Y')->format('Y-m-d');
+        $compingreso->fecha = $request->almfecha;
         $compingreso->contactoproveedor = $request->almcontacto;
         $compingreso->save();
 
