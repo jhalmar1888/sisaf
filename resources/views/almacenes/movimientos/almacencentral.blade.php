@@ -34,9 +34,10 @@
                             <th>Descripcion</th>
                             <th>Tipo</th>
                             <th>Cantidad</th>
-                            <th>P.U.C.F.</th>
-                            <th>P.T.C.F.</th>
-                            <th style="text-align: center" colspan="2">Opciones</th>
+                            <th style="text-align: right">P.U.S.F.</th>
+                            <th style="text-align: right">P.U.C.F.</th>
+                            <th style="text-align: right">P.TOTAL.S.F.</th>
+                            <th style="text-align: right">P.TOTAL.C.F.</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,14 +45,14 @@
                         <tr>
                             <td>{{ $almacen->articulo->codigo }}</td>
                             <td>{{ $almacen->articulo->partida->partida }}</td>
-                            <td>{{ $almacen->articulo->descripcion }}</td>
-                            <td>{{ $almacen->articulo->tipounidad->tipo }}</td>
                             <td>{{ $almacen->cantidad }}</td>
-                            <td>Bs. {{ $almacen->articulo->pusf }}</td>
-                            <td>Bs. {{ $almacen->articulo->pusf * $almacen->cantidad }}</td>
-                            <td><a href="#">Modificar</a></td>
-                            <td><a href="#">Eliminar</a></td>
-                            </tr>
+                            <td>{{ $almacen->articulo->tipounidad->tipo }}</td>
+                            <td>{{ $almacen->articulo->descripcion }}</td>
+                            <td style="text-align: right">Bs. {{ number_format($almacen->articulo->pusf, 3, ',', '.') }}</td>
+                            <td style="text-align: right">Bs. {{ number_format($almacen->articulo->pucf, 3, ',', '.') }}</td>
+                            <td style="text-align: right">Bs. {{ number_format($almacen->articulo->pusf * $almacen->cantidad, 3, ',', '.') }}</td>
+                            <td style="text-align: right">Bs. {{ number_format($almacen->articulo->pucf * $almacen->cantidad, 3, ',', '.') }}</td>
+                        </tr>
                         @endforeach
                         </tbody>
                     </table>

@@ -18,7 +18,7 @@ class CrearTableCompingresos extends Migration
             $table->unsignedInteger('id_proveedor');
             $table->integer('nfactura');
             $table->date('fecha');
-            $table->integer('contactoproveedor');
+            $table->string('contactoproveedor');
 
             $table->foreign('id_proveedor')
                 ->references('id')->on('proveedores')

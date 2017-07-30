@@ -40,3 +40,7 @@ $factory->define(\App\Entities\Partida::class, function (Faker\Generator $genera
         'partida' => $generator->unique()->numberBetween($min=10, $max=10000)
     ];
 });
+
+$factory->define(\App\Entities\Unidad::class, function (\Faker\Generator $generator){
+    return [];
+});

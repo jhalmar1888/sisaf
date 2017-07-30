@@ -14,7 +14,7 @@ class CrearTableKardexcentral extends Migration
     public function up()
     {
         Schema::create('kardexcentral', function (Blueprint $table) {
-         //   $table->increments('id');
+            $table->increments('id');
             $table->unsignedInteger('id_material');
             $table->integer('cantidad');
 

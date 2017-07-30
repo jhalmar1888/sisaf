@@ -26,6 +26,6 @@ class CrearTableTipounidades extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipounidad');
+        Schema::dropIfExists('tipounidades');
     }
 }

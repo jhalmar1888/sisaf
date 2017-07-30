@@ -35,7 +35,8 @@
                             <th>Tipo</th>
                             <th>P.U.S.F.</th>
                             <th>P.U.C.F.</th>
-                            <th style="text-align: center" colspan="2">Opciones</th>
+                            {{--<th style="text-align: center" colspan="2">Opciones</th>--}}
+                            <th>Opciones</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,10 +46,10 @@
                             <td>{{ $articulo->partida->partida }}</td>
                             <td>{{ $articulo->descripcion }}</td>
                             <td>{{ $articulo->tipounidad->tipo }}</td>
-                            <td>Bs. {{ $articulo->pusf }}</td>
-                            <td>Bs. {{ $articulo->pucf }}</td>
+                            <td>Bs. {{ number_format($articulo->pusf, 3, ',','.') }}</td>
+                            <td>Bs. {{ number_format($articulo->pucf, 3, ',','.') }}</td>
                             <td><a href="#">Modificar</a></td>
-                            <td><a href="#">Eliminar</a></td>
+                            {{--<td><a href="#">Eliminar</a></td>--}}
                             </tr>
                         @endforeach
                         </tbody>

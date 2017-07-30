@@ -19,8 +19,8 @@ class CrearTableMateriales extends Migration
             $table->unsignedInteger('id_partida');
             $table->string('descripcion');
             $table->unsignedInteger('id_tipounidad');
-            $table->decimal('pusf');
-            $table->decimal('pucf');
+            $table->decimal('pusf', 8, 3);
+            $table->decimal('pucf', 8, 3);
 
             $table->foreign('id_partida')
                 ->references('id')->on('partidas')

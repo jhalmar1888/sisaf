@@ -49,7 +49,7 @@
                     <div class="form-group">
                         {{ Form::label('almtipounidad', 'Tipo:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::select('almtipounidad', $tipounidad, ['class' => 'form-control', 'placeholder' => 'Tipo de Unidad']) }}
+                            {{ Form::select('almtipounidad', $tipounidades, ['class' => 'form-control', 'placeholder' => 'Tipo de Unidad']) }}
                         </div>
                     </div>
                     <div class="form-group">

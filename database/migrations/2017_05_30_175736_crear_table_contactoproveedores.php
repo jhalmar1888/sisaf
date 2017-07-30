@@ -26,6 +26,6 @@ class CrearTableContactoproveedores extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contactoproveedor');
+        Schema::dropIfExists('contactoproveedores');
     }
 }

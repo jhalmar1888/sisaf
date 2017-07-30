@@ -2,132 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\ComprobanteIngreso;
 use App\Entities\KardexCentral;
+use App\Entities\KardexIngreso;
 use App\Entities\Material;
 use App\Entities\Partida;
+use App\Entities\Proveedor;
 use App\Entities\TipoUnidad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
 
 class AlmacenController extends Controller
 {
+    /********** para los articulos **************/
+
     public function getArticulos()
     {
-        $articulos = Material::paginate(30);
+        $articulos = Material::paginate(50);
 
-        return view('almacenes.movimientos.articulos', compact('articulos'));
-    }
-
-    public function getAlmacenes()
-    {
-        $almacenes = KardexCentral::paginate(30);
-
-        return view('almacenes.movimientos.almacencentral', compact('almacenes'));
-    }
-
-    public function getAgregarUsuario()
-    {
-        $modulos = Modulo::all()->pluck('modulo', 'id');
-        $roles = Rol::all()->pluck('rol', 'id');
-
-        return view('administrador.usuarios.agregarusuario', compact('modulos', 'roles'));
-    }
-
-    public function postAgregarUsuario(Request $request)
-    {
-        $this->validate($request, [
-            'admusuario'       => 'required|unique:usuarios,usuario|min:5|max:15',
-            'admnombres'       => 'required|min:5|max:100',
-            'password'         => 'required|min:5|max:50',
-            'adm_id_modulo'    => 'required|exists:modulos,id',
-            'adm_id_rol'       => 'required|exists:roles,id'
-        ]);
-        $nuevo_usuario = new Usuario;
-        $nuevo_usuario->usuario = $request->admusuario;
-        $nuevo_usuario->nombre = $request->admnombres;
-        $nuevo_usuario->password = bcrypt($request->password);
-        $nuevo_usuario->remember_token = str_random(100);
-        $nuevo_usuario->id_modulo = $request->adm_id_modulo;
-        $nuevo_usuario->id_rol = $request->adm_id_rol;
-        $nuevo_usuario->activo = true;
-        $nuevo_usuario->save();
-
-        Alert::message('Usuario agergado exitósamnte', 'success');
-
-        return redirect()->route('superadmin.getUsuarios');
-    }
-
-    public function getHabilitacion($id_usuario)
-    {
-        $usuario = Usuario::findOrFail($id_usuario);
-        if ($usuario->activo == true){
-            $usuario->activo = false;
-            Alert::message('Usuario ' . $usuario->usuario . ' desactivado exitósamente', 'danger');
-        } else {
-            $usuario->activo = true;
-            Alert::message('Usuario ' . $usuario->usuario . ' activado exitósamente', 'success');
-        }
-        $usuario->save();
-        return redirect()->route('superadmin.getUsuarios');
-    }
-
-    public function getModificarUsuario($id_usuario)
-    {
-        $usuario = Usuario::findOrFail($id_usuario);
-
-        $modulos = Modulo::all()->pluck('modulo', 'id');
-        $roles = Rol::all()->pluck('rol', 'id');
-
-        return view('administrador.usuarios.modificarusuario', compact(
-            'modulos', 'roles','usuario'
-        ));
-    }
-
-    public function putModificarUsuario(Request $request)
-    {
-        $this->validate($request, [
-            'admusuario'       => ['required', 'min:5', 'max:15', Rule::unique('usuarios', 'usuario')->ignore($request->admusuario, 'usuario')],
-            'admnombres'       => 'required|min:5|max:100',
-            'adm_id_modulo'    => 'required|exists:modulos,id',
-            'adm_id_rol'       => 'required|exists:roles,id'
-        ]);
-        $nuevo_usuario = Usuario::findOrFail($request->antiguo_id);
-        $nuevo_usuario->usuario = $request->admusuario;
-        $nuevo_usuario->nombre = $request->admnombres;
-        $nuevo_usuario->id_modulo = $request->adm_id_modulo;
-        $nuevo_usuario->id_rol = $request->adm_id_rol;
-        $nuevo_usuario->save();
-
-        Alert::message('Usuario modificado exitósamnte', 'success');
-
-        return redirect()->route('superadmin.getUsuarios');
+        return view('almacenes.articulos.articulos', compact('articulos'));
     }
 
     public function getAgregarArticulo()
     {
-        $partidas = Partida::all()
-            ->pluck('partida', 'id');
+        $partidas = Partida::pluck('partida', 'id');
+        $tipounidades = TipoUnidad::pluck('tipo', 'id');
 
-        $tipounidad = TipoUnidad::all()
-            ->pluck('tipo', 'id');
-
-        return view('almacenes.movimientos.agregararticulo', compact('partidas', 'tipounidad'));
+        return view('almacenes.articulos.agregararticulo', compact('partidas', 'tipounidades'));
     }
 
     public function postAgregarArticulo(Request $request)
     {
-//        dd($request->all());
         $this->validate($request, [
-            'almcodigo'     => 'required',
+            'almcodigo' => 'required',
             'almid_partida' => 'required',
-            'almdescripcion'=> 'required',
-            'almtipounidad' => 'required',
-            'almpusf'       => 'required',
-            'almpucf'       => 'required'
+            'almdescripcion'    => 'required',
+            'almtipounidad'     => 'required',
+            'almpusf'           => 'required',
+            'almpucf'           => 'required'
         ]);
 
         $material = new Material;
-
         $material->codigo = $request->almcodigo;
         $material->id_partida = $request->almid_partida;
         $material->descripcion = $request->almdescripcion;
@@ -136,8 +52,143 @@ class AlmacenController extends Controller
         $material->pucf = $request->almpucf;
         $material->save();
 
-        Alert::message('Artículo agergado exitósamnte', 'success');
+        Alert::message('Articulo agergado exitósamnte', 'success');
 
         return redirect()->route('almacen.getArticulos');
+    }
+
+    public function getModificarArticulo($id_articulo)
+    {
+        
+    }
+
+    public function postModificarArticulo(Request $request)
+    {
+        
+    }
+    
+    /**************** para los almacenes **************/
+
+    public function getAlmacenes()
+    {
+        $almacenes = KardexCentral::paginate(30);
+
+        return view('almacenes.movimientos.almacencentral', compact('almacenes'));
+    }
+
+    public function getComprobantesIngreso()
+    {
+        $compingresos = ComprobanteIngreso::paginate(50);
+
+        return view('almacenes.movimientos.comprobantesingreso', compact('compingresos'));
+    }
+
+    public function getAgregarComprobanteIngreso()
+    {
+        $proveedores = Proveedor::pluck('proveedor', 'id');
+
+        return view('almacenes.movimientos.agregarcomprobanteingreso', compact('proveedores'));
+    }
+
+    public function postAgregarComprobanteIngreso(Request $request)
+    {
+        $this->validate($request, [
+            'almid_proveedor'   => 'required',
+            'almfecha'  => 'required',
+            'almcontacto' => 'required',
+            'almnfactura' => 'required'
+        ]);
+
+        $compingreso = new ComprobanteIngreso;
+        $compingreso->id_proveedor = $request->almid_proveedor;
+        $compingreso->nfactura = $request->almnfactura;
+        $compingreso->fecha = $request->almfecha;
+        $compingreso->contactoproveedor = $request->almcontacto;
+        $compingreso->save();
+
+        Alert::message('Comprobante agergado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getComprobantesIngreso');
+    }
+
+    public function getComprobanteIngresoKardex($id_compingreso)
+    {
+        $comprobante = ComprobanteIngreso::findOrFail($id_compingreso);
+        $articulos = KardexIngreso::where('id_compingresos', $id_compingreso)
+            ->get();
+
+        return view('almacenes.movimientos.comprobantesingresokardex', compact('comprobante', 'articulos'));
+    }
+
+    public function getAgregarArticuloCI($id_compingreso)
+    {
+        $comprobante = ComprobanteIngreso::findOrFail($id_compingreso);
+        $articulos = Material::pluck('descripcion', 'id');
+
+        return view('almacenes.movimientos.agregararticulocomprobanteingreso', compact('comprobante', 'articulos'));
+    }
+
+    public function postAgregarArticuloCI(Request $request)
+    {
+        $this->validate($request, [
+            'id_compingreso'    => 'required',
+            'almid_articulo'    => 'required',
+            'almcantidad'       => 'required'
+        ]);
+
+        $articulo = KardexCentral::where('id_material', $request->almid_articulo)->first();
+        if ($articulo)
+        {
+            $articulo->cantidad = $articulo->cantidad + $request->almcantidad;
+            $articulo->save();
+        }
+        else
+        {
+            $articulo = new KardexCentral;
+            $articulo->id_material = $request->almid_articulo;
+            $articulo->cantidad = $request->almcantidad;
+            $articulo->save();
+        }
+
+        $art = Material::findOrFail($request->almid_articulo);
+        $comprobante = new KardexIngreso;
+        $comprobante->id_compingresos = $request->id_compingreso;
+        $comprobante->id_material = $request->almid_articulo;
+        $comprobante->cantidades = $request->almcantidad;
+        $comprobante->ptotal = $art->pusf * $request->almcantidad;
+        $comprobante->save();
+
+        Alert::message('Articulo agregado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getComprobanteIngresoKardex', $request->id_compingreso);
+    }
+
+    /***** para los proveedores ************/
+
+    public function getProveedores()
+    {
+        $proveedores = Proveedor::paginate(50);
+
+        return view('almacenes.proveedores.proveedores', compact('proveedores'));
+    }
+
+    public function getAgregarProveedor()
+    {
+        return view('almacenes.proveedores.agregarproveedor');
+    }
+
+    public function postAgregarProveedor(Request $request)
+    {
+        $this->validate($request, [
+            'almproveedor' => 'required'
+        ]);
+
+        $proveedor = new Proveedor;
+        $proveedor->proveedor = $request->almproveedor;
+        $proveedor->save();
+
+        Alert::message('Proveedor agergado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getProveedores');
     }
 }
