@@ -17,3 +17,7 @@
 @if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Almacen')
     @include('almacenes.menu')
 @endif
+
+@if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Presupuestos')
+    @include('presupuestos.menu')
+@endif

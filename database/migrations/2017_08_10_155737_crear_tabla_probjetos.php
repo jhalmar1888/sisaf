@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablePartidas extends Migration
+class CrearTablaProbjetos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CrearTablePartidas extends Migration
      */
     public function up()
     {
-        Schema::create('partidas', function (Blueprint $table) {
+        Schema::create('probjetos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('partida');
-            $table->string('descripcion');
+            $table->enum('tipo', ['1', '2', '3']); // para ver en que columna imprimir
+            $table->string('nombre');
+            $table->string('detalle');
         });
     }
 
@@ -27,6 +28,6 @@ class CrearTablePartidas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partidas');
+        Schema::dropIfExists('probjetos');
     }
 }

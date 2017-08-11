@@ -124,8 +124,16 @@ return [
         'almtipounidad'     => 'Tipo',
         'almpusf'           => 'Precio Unidad s/factura',
         'almpucf'           => 'Precio Undiad c/factura',
-        'almdescripcion'    => 'Descripcion'
+        'almdescripcion'    => 'Descripcion',
 
+
+
+
+        // para presupuestos
+
+        'pretipo'   => 'Tipo',
+        'prenombre' => 'Nombre',
+        'predetalle'    => 'Detalle',
     ],
 ];
 

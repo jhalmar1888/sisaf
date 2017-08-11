@@ -36,11 +36,25 @@ $factory->define(\App\Entities\TipoUnidad::class, function (\Faker\Generator $ge
 });
 
 $factory->define(\App\Entities\Partida::class, function (Faker\Generator $generator){
+    $var = $generator->unique()->numberBetween($min=10, $max=10000);
     return [
-        'partida' => $generator->unique()->numberBetween($min=10, $max=10000)
+        'partida' => $var,
+        'descripcion' => $var
     ];
 });
 
 $factory->define(\App\Entities\Unidad::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Prcomprobante::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Probjeto::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Prregistro::class, function (\Faker\Generator $generator){
     return [];
 });

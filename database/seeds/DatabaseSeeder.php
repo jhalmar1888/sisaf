@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PartidasTableSeederMio::class);
 
         $this->call(TipoUnidadesSeeder::class);
+        $this->call(ProbjetosSeeder::class);
 
     }
 }

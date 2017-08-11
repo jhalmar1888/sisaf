@@ -48,4 +48,7 @@ Route::group(['middleware' => 'auth'], function (){
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/almacenes.php');
 
+    /** @noinspection PhpIncludeInspection */
+    require base_path('routes/presupuestos.php');
+
 });
