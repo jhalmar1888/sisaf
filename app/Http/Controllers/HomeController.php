@@ -38,5 +38,9 @@ class HomeController extends Controller
         if (Auth::user()->modulo->modulo  == 'Almacen') {
             return view('home.homealmacen');
         }
+
+        if (Auth::user()->modulo->modulo  == 'Presupuestos') {
+            return view('home.homepresupuestos');
+        }
     }
 }

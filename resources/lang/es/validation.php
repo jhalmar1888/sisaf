@@ -98,7 +98,7 @@ return [
     */
     'attributes' => [
         'password'   => 'Contraseña',
-        'grado'     => 'Grado',
+        'grado'      => 'Grado',
 
 
         // para el superadmin
@@ -119,6 +119,23 @@ return [
         'rrhh_id_grado'     => 'grados',
 
 
+        // para almacenes
+
+        'almcodigo'         => 'Código',
+        'almid_partida'     => 'Partida',
+        'almtipounidad'     => 'Tipo',
+        'almpusf'           => 'Precio Unidad s/factura',
+        'almpucf'           => 'Precio Undiad c/factura',
+        'almdescripcion'    => 'Descripcion',
+
+
+
+
+        // para presupuestos
+
+        'pretipo'   => 'Tipo',
+        'prenombre' => 'Nombre',
+        'predetalle'    => 'Detalle',
     ],
 ];
 

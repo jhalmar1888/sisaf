@@ -22,6 +22,7 @@ class CrearTableUsuarios extends Migration
             $table->rememberToken();
             $table->unsignedInteger('id_modulo');
             $table->unsignedInteger('id_rol');
+            $table->unsignedInteger('id_unidad')->default('1');
             $table->boolean('activo')->default(true);
 
             $table->foreign('id_modulo')
@@ -30,6 +31,10 @@ class CrearTableUsuarios extends Migration
                 ->onUpdate('cascade');
             $table->foreign('id_rol')
                 ->references('id')->on('roles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('id_unidad')
+                ->references('id')->on('unidades')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

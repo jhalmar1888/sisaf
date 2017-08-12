@@ -31,6 +31,30 @@ $factory->define(\App\Entities\Modulo::class, function (\Faker\Generator $genera
 $factory->define(\App\Entities\Rol::class, function (\Faker\Generator $generator){
     return [];
 });
-$factory->define(\App\Entities\CatalogoCuentaemi::class, function (\Faker\Generator $generator){
+$factory->define(\App\Entities\TipoUnidad::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Partida::class, function (Faker\Generator $generator){
+    $var = $generator->unique()->numberBetween($min=10, $max=10000);
+    return [
+        'partida' => $var,
+        'descripcion' => $var
+    ];
+});
+
+$factory->define(\App\Entities\Unidad::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Prcomprobante::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Probjeto::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Prregistro::class, function (\Faker\Generator $generator){
     return [];
 });

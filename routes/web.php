@@ -48,9 +48,7 @@ Route::group(['middleware' => 'auth'], function (){
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/almacenes.php');
 
-    // para contabilidad
-
     /** @noinspection PhpIncludeInspection */
-    require base_path('routes/contabilidad.php');
+    require base_path('routes/presupuestos.php');
 
 });
