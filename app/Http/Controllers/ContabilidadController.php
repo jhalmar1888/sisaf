@@ -321,4 +321,22 @@ class ContabilidadController extends Controller
 
         return redirect()->route('contabilidad.getDetalleCI', $request->id_comprobante);
     }
+
+
+    public function getLibroMayor()
+    {
+        $registros = Contregistro::where('valor', '>', 0)
+            ->get();
+
+        $sumadebe = Contregistro::where('valor', '>', 0)
+            ->where('tiporeg', 'debe')
+            ->get()
+            ->sum('valor');
+        $sumahaber = Contregistro::where('valor', '>', 0)
+            ->where('tiporeg', 'haber')
+            ->get()
+            ->sum('valor');
+
+        return view('contabilidad.libromayor', compact('registros', 'sumadebe', 'sumahaber'));
+    }
 }

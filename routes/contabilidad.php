@@ -54,3 +54,11 @@ Route::post('agregar-detalle-comprobante-de-ingreso', [
     'uses'  => 'ContabilidadController@postAgregarDetalleCI',
     'as'    => 'contabilidad.postAgregarDetalleCI'
 ]);
+
+
+
+
+Route::get('libro-mayor', [
+    'uses'  => 'ContabilidadController@getLibroMayor',
+    'as'    => 'contabilidad.getLibroMayor'
+]);
