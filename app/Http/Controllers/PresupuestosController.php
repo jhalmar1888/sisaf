@@ -119,6 +119,7 @@ class PresupuestosController extends Controller
         ]);
 
         $registro = new Prregistro;
+        
         $registro->id_prcomprobante = $request->id_comprobante;
         $registro->id_probjeto = $request->preid_objeto;
         $registro->valor = $request->precantidad;
