@@ -26,5 +26,17 @@ class RolSeeder extends Seeder
         factory(\App\Entities\Rol::class)->create([
             'rol' => 'usuario'
         ]);
+
+        factory(\App\Entities\Rol::class)->create([
+            'rol' => 'usuario_ingresos'
+        ]);
+
+        factory(\App\Entities\Rol::class)->create([
+            'rol' => 'usuario_egresos'
+        ]);
+
+        factory(\App\Entities\Rol::class)->create([
+            'rol' => 'usuario_cargosdecuenta'
+        ]);
     }
 }

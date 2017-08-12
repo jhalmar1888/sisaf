@@ -58,3 +58,15 @@ $factory->define(\App\Entities\Probjeto::class, function (\Faker\Generator $gene
 $factory->define(\App\Entities\Prregistro::class, function (\Faker\Generator $generator){
     return [];
 });
+
+$factory->define(\App\Entities\Contobjeto::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Contcomprobante::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Contregistro::class, function (\Faker\Generator $generator){
+    return [];
+});

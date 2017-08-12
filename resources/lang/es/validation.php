@@ -112,6 +112,9 @@ return [
         'cont_id_grado'      => 'Grado',
         'contcodigo'         => 'Codigo',
         'contdescripcion'    => 'Descripcion',
+        'contipo'           => 'Tipo',
+        'concodigo'         => 'Codigo',
+        'condetalle'        => 'Detalle',
 
 
 

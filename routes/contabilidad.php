@@ -1,68 +1,56 @@
- <?php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: charlie
+ * Date: 12/8/17
+ * Time: 16:45
+ */
 
-Route::get('catalogocuentasemi', [
-    'uses'  => 'ContabilidadController@getCatalogoCuentasemi',
-    'as'    => 'contabilidad.getCatalogoCuentasemi'
-]);
-
-Route::get('agregar-catalogocuentaemi', [
-    'uses'  => 'ContabilidadController@getAgregarCatalogoCuentaemi',
-    'as'    => 'contabilidad.getAgregarCatalogoCuentasemi'
-]);
-
-Route::post('agregar-catalogocuentaemi', [
-    'uses'  => 'ContabilidadController@postAgregarCatalogoCuentaemi',
-    'as'    => 'contabilidad.postAgregarCatalogoCuentaemi'
+Route::get('objetos-contabilidad', [
+    'uses' => 'ContabilidadController@getObjetos',
+    'as'   => 'contabilidad.getObjetos'
 ]);
 
-Route::get('habilitacion-catalogocuentaemi/{id_catalogocuentaemi}', [
-    'uses'  => 'ContabilidadController@getHabilitacion',
-    'as'    => 'contabilidad.getHabilitacion'
+Route::get('agregar-objeto', [
+    'uses' => 'ContabilidadController@getAgregarObjeto',
+    'as'   => 'contabilidad.getAgregarObjeto'
 ]);
 
-Route::get('modificar-catalogocuentaemi/{id_catalogocuentaemi}', [
-    'uses'  => 'ContabilidadController@getModificarCatalogoCuentaemi',
-    'as'    => 'contabilidad.getModificarCatalogoCuentaemi'
+Route::post('agregar-objeto', [
+    'uses' => 'ContabilidadController@postAgregarObjeto',
+    'as'   => 'contabilidad.postAgregarObjeto'
 ]);
 
-Route::put('modificar-catalogocuentaemi', [
-    'uses'  => 'ContabilidadController@putModificarCatalogoCuentaemi',
-    'as'    => 'contabilidad.putModificarCatalogoCuentaemi'
-]);
-// a partir de aqui routas para la subcuentas
-Route::get('co_subcuentas', [
-    'uses'  => 'ContabilidadController@getCo_Subcuentas',
-    'as'    => 'contabilidad.getCo_Subcuentas'
+
+
+Route::get('comprobantes-de-ingreso', [
+    'uses'  => 'ContabilidadController@getComprobantesIngreso',
+    'as'    => 'contabilidad.getComprobantesIngreso'
 ]);
 
-Route::get('agregar-co_subcuenta', [
-    'uses'  => 'ContabilidadController@getAgregarCo_Subcuenta',
-    'as'    => 'contabilidad.getAgregarCo_Subcuenta'
-]);
-Route::post('agregar-co_subcuenta', [
-    'uses'  => 'ContabilidadController@postAgregarCo_Subcuenta',
-    'as'    => 'contabilidad.postAgregarCo_Subcuenta'
-]);
-Route::get('habilitacion-co_subcuenta/{id_co_subcuenta}', [
-    'uses'  => 'ContabilidadController@getHabilitacionsubcuenta',
-    'as'    => 'contabilidad.getHabilitacionsubcuenta'
-]);
-Route::get('modificar-co_subcuenta/{id_subcuenta}', [
-    'uses'  => 'ContabilidadController@getModificarCo_Subcuenta',
-    'as'    => 'contabilidad.getModificarCo_Subcuenta'
-]);
-Route::put('modificar-co_subcuenta', [
-    'uses'  => 'ContabilidadController@putModificarCo_Subcuenta',
-    'as'    => 'contabilidad.putModificarCo_Subcuenta'
+Route::get('agregar-comprobante-de-ingreso', [
+    'uses'  => 'ContabilidadController@getAgregarComprobanteIngreso',
+    'as'    => 'contabilidad.getAgregarComprobanteIngreso'
 ]);
 
-// para tipo de monedas
-Route::get('co_tipomonedas', [
-    'uses'  => 'ContabilidadController@getCo_Tipomonedas',
-    'as'    => 'contabilidad.getCo_Tipomonedas'
+Route::post('agregar-comprobante-de-ingreso', [
+    'uses'  => 'ContabilidadController@postAgregarComprobanteIngreso',
+    'as'    => 'contabilidad.postAgregarComprobanteIngreso'
 ]);
-// para tipo de documento
- Route::get('co_tipodocumentos', [
-     'uses'  => 'ContabilidadController@getCo_Tipodocumentos',
-     'as'    => 'contabilidad.getCo_Tipodocumentos'
- ]);
+
+
+
+Route::get('detalle-comprobamte-de-ingreso/{id_comprobante}', [
+    'uses'  => 'ContabilidadController@getDetalleCI',
+    'as'    => 'contabilidad.getDetalleCI'
+]);
+
+Route::get('agregar-detalle-comprobante-de-ingreso/{id_comprobante}', [
+    'uses'  => 'ContabilidadController@getAgregarDetalleCI',
+    'as'    => 'contabilidad.getAgregarDetalleCI'
+]);
+
+Route::post('agregar-detalle-comprobante-de-ingreso', [
+    'uses'  => 'ContabilidadController@postAgregarDetalleCI',
+    'as'    => 'contabilidad.postAgregarDetalleCI'
+]);

@@ -43,6 +43,24 @@ class UsuarioSeeder extends Seeder
             'password' => bcrypt('1234567')
         ]);
         factory(\App\Entities\Usuario::class)->create([
+            'usuario'   => 'usuarioingresos',
+            'id_modulo' => 3,
+            'id_rol' => '5',
+            'password' => bcrypt('1234567')
+        ]);
+        factory(\App\Entities\Usuario::class)->create([
+            'usuario'   => 'usuarioegresos',
+            'id_modulo' => 3,
+            'id_rol' => '6',
+            'password' => bcrypt('1234567')
+        ]);
+        factory(\App\Entities\Usuario::class)->create([
+            'usuario'   => 'usuariocargosdecuenta',
+            'id_modulo' => 3,
+            'id_rol' => '7',
+            'password' => bcrypt('1234567')
+        ]);
+        factory(\App\Entities\Usuario::class)->create([
             'usuario'   => 'opecont',
             'id_modulo' => 3,
             'id_rol' => '3',

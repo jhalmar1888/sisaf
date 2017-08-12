@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TipoUnidadesSeeder::class);
         $this->call(ProbjetosSeeder::class);
+        $this->call(ContobjetosSeeder::class);
 
     }
 }
