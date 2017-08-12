@@ -110,6 +110,8 @@ return [
         // para contabilidad
 
         'cont_id_grado'      => 'Grado',
+        'contcodigo'         => 'Codigo',
+        'contdescripcion'    => 'Descripcion',
 
 
 

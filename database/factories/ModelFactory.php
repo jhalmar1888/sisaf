@@ -31,3 +31,6 @@ $factory->define(\App\Entities\Modulo::class, function (\Faker\Generator $genera
 $factory->define(\App\Entities\Rol::class, function (\Faker\Generator $generator){
     return [];
 });
+$factory->define(\App\Entities\CatalogoCuentaemi::class, function (\Faker\Generator $generator){
+    return [];
+});

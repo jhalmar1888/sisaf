@@ -7,18 +7,19 @@
             <span>Contabilidad</span>
         </a>
         <ul class="sub-menu">
-            <li><a href="{{ route('superadmin.getUsuarios') }}">Cuentas Contables</a></li>
-            <li><a href="{{ route('superadmin.getAgregarUsuario') }}">Plan de Cuentas Contables</a></li>
-            <li><a href="{{ route('superadmin.getAgregarUsuario') }}">Subcuentas</a></li>
-            <li><a href="{{ route('superadmin.getAgregarUsuario') }}">Estados Financieros de Cuentas</a></li>
-            <li><a href="{{ route('superadmin.getAgregarUsuario') }}">Estados Financieros de Subcuentas</a></li>
+            <li><a href="{{ route('contabilidad.getCatalogoCuentasemi') }}">Cuentas Contables</a></li>
+            <li><a href="{{ route('contabilidad.getAgregarCatalogoCuentasemi') }}">Agregar Cuentas Contables</a></li>
+            <li><a href="{{ route('contabilidad.getCo_Subcuentas') }}">Subcuentas</a></li>
+            <li><a href="{{ route('contabilidad.getAgregarCo_Subcuenta') }}">Agregar SubCuentas Contables</a></li>
+            <li><a href="{{ route('contabilidad.getCo_Tipomonedas') }}">Tipo de Monedas</a></li>
+            <li><a href="{{ route('contabilidad.getCo_Tipodocumentos') }}">Estados Financieros de Subcuentas</a></li>
             <li><a href="{{ route('superadmin.getAgregarUsuario') }}">Personal</a></li>
         </ul>
     </li>
     <li class="has-sub">
         <a href="javascript:;">
             <b class="caret pull-right"></b>
-            <i class="fa fa-users"></i>2
+            <i class="fa fa-users"></i>
             <span>Ingresos</span>
         </a>
         <ul class="sub-menu">

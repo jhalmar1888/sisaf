@@ -35,16 +35,16 @@ class CrearTablaPersonas extends Migration
                 ->references('id')->on('ciudades')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreign('id_sangre')
-                ->references('id')->on('sangres')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->foreign('id_estadocivil')
                 ->references('id')->on('estadosciviles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreign('id_grado')
                 ->references('id')->on('grados')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('id_sangre')
+                ->references('id')->on('sangres')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreign('id_arma')
