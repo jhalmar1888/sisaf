@@ -119,7 +119,8 @@ return [
 
 
         // para rrhh
-        'rrhh_id_grado'     => 'grados',
+        'rrhh_id_grado'     => 'Grados',
+        'rhcargo'           => 'Cargo',
 
 
         // para almacenes

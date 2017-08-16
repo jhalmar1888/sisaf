@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTableGrados extends Migration
+class CrearTablaCursos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CrearTableGrados extends Migration
      */
     public function up()
     {
-        Schema::create('grados', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('grado');
-            $table->boolean('activo')->default(true);
+            $table->string('curso');
+            $table->unsignedInteger('id_persona');
+
+            $table->foreign('id_persona')
+                ->references('id')->on('personas')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
@@ -27,6 +32,6 @@ class CrearTableGrados extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grados');
+        Schema::dropIfExists('cursos');
     }
 }

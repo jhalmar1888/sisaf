@@ -15,7 +15,7 @@ class CrearTableArmas extends Migration
     {
         Schema::create('armas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('armas');
+            $table->string('arma');
             $table->boolean('activo')->default(true);
         });
     }
