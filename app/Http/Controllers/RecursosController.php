@@ -15,6 +15,8 @@ use App\Entities\Experiencia;
 use App\Entities\Otrosdoc;
 use App\Entities\Persona;
 use App\Entities\Refpersonal;
+use App\Entities\Rhmes;
+use App\Entities\Rhplanilla;
 use App\Entities\Sangre;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -375,5 +377,95 @@ class RecursosController extends Controller
         Alert::message('Referencias Personales agregados exitósamente', 'success');
 
         return redirect()->route('rh.getEmpleados');
+    }
+
+    /********** para las planillas ***********/
+
+    public function getMeses()
+    {
+        $meses = Rhmes::paginate(50);
+
+        return view('rrhh.meses.meses', compact('meses'));
+    }
+
+    public function getAgregarMes()
+    {
+        return view('rrhh.meses.agregarmes');
+    }
+
+    public function postAgregarMes(Request $request)
+    {
+        $this->validate($request, [
+            'rhmes' => 'required'
+        ]);
+
+        $mes = new Rhmes;
+        $mes->mes = $request->rhmes;
+        $mes->save();
+
+        Alert::message('Mes agregados exitósamente', 'success');
+
+        return redirect()->route('rh.getMeses');
+    }
+
+    public function getAgregarPlanilla()
+    {
+        $meses = Rhmes::pluck('mes', 'id');
+        $personas = Persona::orderBy('paterno')->pluck('paterno', 'id');
+
+        return view('rrhh.planillas.agregarplanilla', compact('meses', 'personas'));
+    }
+
+    public function postAgregarPlanilla(Request $request)
+    {
+        $this->validate($request, [
+            'rhid_mes'  => 'required',
+            'rhid_persona' => 'required',
+            'rhdias'    => 'required|numeric|min:0',
+            'rhreintegro'   => 'required',
+            'rhprestamo'    => 'required',
+            'rhatrasos'     => 'required',
+            'rhotros'       => 'required',
+            'rhfdia'        => 'required|min:0',
+            'rhfmes'        => 'required|min:0',
+            'rhfano'        => 'required|min:0',
+            'rhsalario'     => 'required|min:0'
+        ]);
+
+        $planilla = new Rhplanilla;
+        $planilla->id_rhmes = $request->rhid_mes;
+        $planilla->id_persona = $request->rhid_persona;
+        $planilla->dias = $request->rhdias;
+        $planilla->fdia = $request->rhfdia;
+        $planilla->fmes = $request->rhfmes;
+        $planilla->fano = $request->rhfano;
+        $planilla->reintegro = $request->rhreintegro;
+        $planilla->salariobasico = $request->rhsalario;
+        $planilla->prestamo = $request->rhprestamo;
+        $planilla->atrasos = $request->rhatrasos;
+        $planilla->otros = $request->rhotros;
+        $planilla->save();
+
+        Alert::message('Planilla agregada exitósamente', 'success');
+
+        return redirect()->route('rh.getMeses');
+    }
+
+    public function getPlanilla($id_mes)
+    {
+        $mes = Rhmes::findOrFail($id_mes);
+        $planillas = Rhplanilla::where('id_rhmes', $id_mes)
+            ->get();
+
+        return view('rrhh.planillas.planilla', compact('mes', 'planillas'));
+    }
+
+    public function getPlanillaDetalle($id_mes)
+    {
+        $mes = Rhmes::findOrFail($id_mes);
+        $planillas = Rhplanilla::where('id_rhmes', $id_mes)
+            ->get();
+
+        return view('rrhh.planillas.planilladetalle', compact('mes', 'planillas'));
     }
 }

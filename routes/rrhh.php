@@ -141,3 +141,43 @@ Route::post('agregar-carateristicas-personales', [
     'uses'  => 'RecursosController@postAgregarCaracteristicas',
     'as'    => 'rh.postAgregarCaracteristicas'
 ]);
+
+
+
+
+
+Route::get('meses', [
+    'uses'  => 'RecursosController@getMeses',
+    'as'    => 'rh.getMeses'
+]);
+
+Route::get('agregar-mes', [
+    'uses'  => 'RecursosController@getAgregarMes',
+    'as'    => 'rh.getAgregarMes'
+]);
+
+Route::post('agregar-mes', [
+    'uses'  => 'RecursosController@postAgregarMes',
+    'as'    => 'rh.postAgregarMes'
+]);
+
+Route::get('planilla/{id_mes}', [
+    'uses'  => 'RecursosController@getPlanilla',
+    'as'    => 'rh.getPlanilla'
+]);
+
+Route::get('planilla-detalle/{id_mes}', [
+    'uses'  => 'RecursosController@getPlanillaDetalle',
+    'as'    => 'rh.getPlanillaDetalle'
+]);
+
+
+Route::get('agregar-planilla', [
+    'uses'  => 'RecursosController@getAgregarPlanilla',
+    'as'    => 'rh.getAgregarPlanilla'
+]);
+
+Route::post('agregar-planilla', [
+    'uses'  => 'RecursosController@postAgregarPlanilla',
+    'as'    => 'rh.postAgregarPlanilla'
+]);
