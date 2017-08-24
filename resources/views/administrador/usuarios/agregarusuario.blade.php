@@ -43,7 +43,7 @@
                     <div class="form-group">
                         {{ Form::label('password', 'Contraseña:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('password', old('password'), ['class' => 'form-control', 'placeholder' => 'Contraseña']) }}
+                            {{ Form::password('password', ['class' => 'form-control']) }}
                         </div>
                     </div>
                     <div class="form-group">
