@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProbjetosSeeder::class);
         $this->call(ContobjetosSeeder::class);
 
+        $this->call(TesTableSeeder::class);
+
     }
 }

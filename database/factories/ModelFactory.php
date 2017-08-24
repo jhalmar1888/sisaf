@@ -111,3 +111,15 @@ $factory->define(\App\Entities\Persona::class, function (\Faker\Generator $faker
 $factory->define(\App\Entities\Sangre::class, function (\Faker\Generator $generator){
     return [];
 });
+
+$factory->define(\App\Entities\Beca::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Alumno::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Carrera::class, function (\Faker\Generator $generator){
+    return [];
+});
