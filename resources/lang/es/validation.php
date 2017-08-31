@@ -136,6 +136,8 @@ return [
         'almfsalida'        => 'Fecha de Salida',
         'almcantidad'       => 'Cantidad',
         'almid_articulo'    => 'Articulo',
+        'almdireccion'      => 'Direccion',
+        'almtelefono'       => 'Telefono',
 
 
 

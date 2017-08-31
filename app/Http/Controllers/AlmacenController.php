@@ -266,11 +266,15 @@ class AlmacenController extends Controller
     public function postAgregarProveedor(Request $request)
     {
         $this->validate($request, [
-            'almproveedor' => 'required'
+            'almproveedor'  => 'required',
+            'almdireccion'  => 'required',
+            'almtelefono'   => 'required|numeric|min:0|max:99999999'
         ]);
 
         $proveedor = new Proveedor;
         $proveedor->proveedor = $request->almproveedor;
+        $proveedor->direccion = $request->almdireccion;
+        $proveedor->telefono = $request->almtelefono;
         $proveedor->save();
 
         Alert::message('Proveedor agergado exitósamente', 'success');
