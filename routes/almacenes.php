@@ -56,6 +56,16 @@ Route::post('agregar-comprobante-salida', [
     'as'    => 'almacen.postAgregarComprobanteSalida'
 ]);
 
+Route::get('agregar-articulos-cs/{id_compsalida}', [
+    'uses'  => 'AlmacenController@getAgregarArticuloCS',
+    'as'    => 'almacen.getAgregarArticuloCS'
+]);
+
+Route::post('agregar-articulos-cs', [
+    'uses'  => 'AlmacenController@postAgregarArticuloCS',
+    'as'    => 'almacen.postAgregarArticuloCS'
+]);
+
 
 /*** para los articulos *******/
 
