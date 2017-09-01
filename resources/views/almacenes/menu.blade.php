@@ -56,6 +56,12 @@
                 <li><a href="{{ route('almacen.getAgregarComprobanteSalida') }}">Agregar Comprobante de Salida</a></li>
             </ul>
         </li>
+        <li class="has-sub">
+            <a href="#" onclick="javascript:window.print();">
+                <i class="fa fa-print"></i>
+                <span>Imprimir</span>
+            </a>
+        </li>
         {{--<li class="has-sub">--}}
             {{--<a href="javascript:;">--}}
                 {{--<b class="caret pull-right"></b>--}}

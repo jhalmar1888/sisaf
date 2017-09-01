@@ -30,6 +30,8 @@
                         <thead>
                         <tr>
                             <th>Proveedor</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
                             {{--<th style="text-align: center" colspan="2">Opciones</th>--}}
                             {{--<th>Opciones</th>--}}
                         </tr>
@@ -38,6 +40,8 @@
                         @foreach($proveedores as $proveedor)
                         <tr>
                             <td>{{ $proveedor->proveedor }}</td>
+                            <td>{{ $proveedor->direccion }}</td>
+                            <td>{{ $proveedor->telefono }}</td>
                             {{--<td><a href="#">Eliminar</a></td>--}}
                             </tr>
                         @endforeach

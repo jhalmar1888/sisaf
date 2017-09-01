@@ -35,6 +35,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {{ Form::label('almdireccion', 'Direccion:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almdireccion', old('almdireccion'), ['class' => 'form-control', 'placeholder' => 'Direccion del Proveedor']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('almtelefono', 'Telefono:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almtelefono', old('almtelefono'), ['class' => 'form-control', 'placeholder' => 'Telefono del Proveedor']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
                         {{ Form::label('', '', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
                             {{ Form::submit('Guardar Proveedor', ['class' => 'btn btn-primary']) }}
