@@ -17,7 +17,6 @@ class CrearTablaCursotes extends Migration
             $table->increments('id');
             $table->string('codigo');
             $table->string('descripcion');
-            $table->boolean('requisito_curso_anterior');
             $table->unsignedInteger('id_carrera');
             $table->foreign('id_carrera')
                 ->references('id')->on('carreras')

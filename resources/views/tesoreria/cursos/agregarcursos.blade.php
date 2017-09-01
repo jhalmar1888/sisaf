@@ -41,13 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('tesrequisito_curso_anterior', 'requisito_curso_anterior:', ['class' => 'control-label col-md-4 col-sm-4']) }}
-                        <div class="col-md-6 col-sm-6">
-                            {{ Form::text('tesrequisito_curso_anterior', old('tesrequisito_curso_anterior'), ['class' => 'form-control', 'placeholder' => 'requisito_curso_anterior']) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label('tesid_carrera', 'id_carrera:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('tesid_carrera', 'Requisito curso anterior:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
                             {{ Form::select('tesid_carrera', $carreras, ['class' => 'form-control', 'placeholder' => 'id_carrera']) }}
                         </div>

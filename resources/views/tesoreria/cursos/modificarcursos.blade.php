@@ -26,7 +26,7 @@
                 </div>
                 @include('partials.errors')
                 <div class="panel-body panel-form">
-                    {{ Form::open(['route' => 'tesoreria.putModificarCurso', 'method'  => 'PUT', 'class' => 'form-horizontal form-bordered']) }}
+                    {{ Form::model($cursos, ['route' => 'tes.postModificarCurso', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
                     {{ Form::hidden('id', $cursos->id) }}
 
                     <div class="form-group">
@@ -40,10 +40,11 @@
                         <div class="col-md-6 col-sm-6">
                             {{ Form::text('tesdescripcion', $cursos->descripcion, ['class' => 'form-control', 'placeholder' => 'descripcion']) }}
                         </div>
-                    <div class="form-group">
-                        {{ Form::label('tesrequisito_curso_anterior', 'requisito_curso_anterior:', ['class' => 'control-label col-md-4 col-sm-4']) }}
-                        <div class="col-md-6 col-sm-6">
-                             {{ Form::text('tesrequisito_curso_anterior', $cursos->requisito_curso_anterior, ['class' => 'form-control', 'placeholder' => 'requisito_curso_anterior']) }}
+                        <div class="form-group">
+                            {{ Form::label('tesid_carrera', 'Requisito curso anterior:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                            <div class="col-md-6 col-sm-6">
+                                {{ Form::select('tesid_carrera', $carreras, ['class' => 'form-control', 'placeholder' => 'id_carrera']) }}
+                            </div>
                         </div>
 
                             <div class="form-group">

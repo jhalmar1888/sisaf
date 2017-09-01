@@ -8,6 +8,7 @@ use App\Entities\Carrera;
 use App\Entities\cursos;
 use App\Entities\gestion;
 use App\Entities\pagos;
+use App\Entities\Unidad;
 use Illuminate\Http\Request;
 use Styde\Html\Facades\Alert;
 
@@ -40,6 +41,31 @@ class TesController extends Controller
         return redirect()->route('tes.getCarreras');
     }
 
+    public function getModificarCurso($id_curso)
+    {
+        $cursos = cursos::findOrFail($id_curso);
+        $carreras = Carrera::pluck('carrera', 'id');
+        return view('tesoreria.cursos.modificarcursos', compact('cursos', 'carreras'));
+    }
+
+    public function postModificarCurso(Request $request)
+    {
+        $this->validate($request, [
+            'tescodigo'                     => 'required',
+            'tesdescripcion'                => 'required',
+            'tesid_carrera'                 => 'required'
+        ]);
+
+        $cursos = cursos::findOrFail($request->id);
+        $cursos->codigo = $request->tescodigo;
+        $cursos->descripcion = $request->tesdescripcion;
+        $cursos->id_carrera = $request->tesid_carrera;
+        $cursos->save();
+
+        Alert::message('Curso modificado exitósamnte', 'success');
+
+        return redirect()->route('tes.getCursos');
+    }
 
     public function getBecas()
     {
@@ -133,7 +159,6 @@ class TesController extends Controller
 
         return view('tesoreria.gestion.gestion', compact('gestion'));
     }
-
     public function getAgregarGestion()
     {
         return view('tesoreria.gestion.agregargestion');
@@ -161,10 +186,16 @@ class TesController extends Controller
 
         return redirect()->route('tes.getGestion');
     }
+    public function getPagos()
+    {
+        $pagos = pagos::paginate(50);
 
+        return view('tesoreria.pagos.pagos', compact('pagos'));
+    }
     public function getAgregarPagos()
     {
-        return view('tesoreria.pagos.agregarpagos');
+        $unidades = Unidad::pluck('unidad', 'id');
+        return view('tesoreria.pagos.agregarpagos', compact('unidades'));
     }
 
     public function postAgregarPagos(Request $request)
@@ -207,7 +238,8 @@ class TesController extends Controller
 
     public function getAgregarCursos()
     {
-        return view('tesoreria.cursos.agregarcursos');
+        $carreras = Carrera::pluck('carrera', 'id');
+        return view('tesoreria.cursos.agregarcursos', compact('carreras'));
     }
 
     public function postAgregarcursos(Request $request)
@@ -215,20 +247,25 @@ class TesController extends Controller
         $this->validate($request, [
             'tescodigo'                     => 'required',
             'tesdescripcion'                => 'required',
-            'tesrequisito_curso_anterior'   => 'required',
             'tesid_carrera'                 => 'required'
         ]);
 
         $cursos = new cursos();
         $cursos->codigo = $request->tescodigo;
         $cursos->descripcion = $request->tesdescripcion;
-        $cursos->requisito_curso_anterior = $request->tesrequisito_curso_anterior;
         $cursos->id_carrera = $request->tesid_carrera;
         $cursos->save();
 
         Alert::message('Curso agregado exitósamnte', 'success');
 
         return redirect()->route('tes.getCursos');
+    }
+
+    public function getCursos()
+    {
+        $cursos = cursos::paginate(50);
+
+        return view('tesoreria.cursos.cursos', compact('cursos'));
     }
 
 }

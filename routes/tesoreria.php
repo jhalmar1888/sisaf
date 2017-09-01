@@ -89,3 +89,13 @@ Route::post('agregar-cursos', [
     'uses'  => 'TesController@postAgregarCursos',
     'as'    => 'tes.postAgregarCursos'
 ]);
+
+Route::get('modificar-cursos/{id_curso}', [
+    'uses'  => 'TesController@getModificarCurso',
+    'as'    => 'tes.getModificarCurso'
+]);
+
+Route::post('modificar-cursos', [
+    'uses'  => 'TesController@postModificarCurso',
+    'as'    => 'tes.postModificarCurso'
+]);

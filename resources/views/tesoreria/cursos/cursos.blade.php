@@ -39,11 +39,11 @@
                         <tbody>
                         @foreach($cursos as $curso)
                         <tr>
-                            <td>{{ $cursos->codigo}}</td>
-                            <td>{{ $cursos->descripcion }}</td>
-                            <td>{{ $cursos->requisito_curso_anterior }}</td>
-                            {{--<td><a href="#">Modificar</a></td>--}}
-                            {{--<td><a href="#">Eliminar</a></td>--}}
+                            <td>{{ $curso->codigo}}</td>
+                            <td>{{ $curso->descripcion }}</td>
+                            <td>{{ $curso->carrera->carrera }}</td>
+                            <td><a href="{{ route('tes.getModificarCurso', $curso->id) }}">Modificar</a></td>
+                            <td><a href="#">Eliminar</a></td>
                             </tr>
                         @endforeach
                         </tbody>

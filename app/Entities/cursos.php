@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class cursos extends Model
 {
-    protected $table = 'cursos';
+    protected $table = 'cursotes';
     public $timestamps = false;
 
     public function carrera()

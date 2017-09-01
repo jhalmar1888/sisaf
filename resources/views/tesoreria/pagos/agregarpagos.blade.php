@@ -43,19 +43,19 @@
                     <div class="form-group">
                         {{ Form::label('tesunidad_academica', 'unidad_academica:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('tesunidad_academica', old('tesunidad_academica'), ['class' => 'form-control', 'placeholder' => 'unidad_academica']) }}
+                            {{ Form::select('tesunidad_academica', $unidades, ['class' => 'form-control', 'placeholder' => 'unidad_academica']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('tesmonto', 'monto:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::select('tesmonto', old('tesmonto'), ['class' => 'form-control', 'placeholder' => 'monto']) }}
+                            {{ Form::number('tesmonto', old('tesmonto'), ['class' => 'form-control', 'placeholder' => 'monto']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('tesmoneda', 'moneda:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::select('tesmoneda', ['1' => 'Bs.', '0' => 'Dolar'], ['class' => 'form-control', 'placeholder' => 'moneda']) }}
+                            {{ Form::select('tesmoneda', ['1' => 'Bolivianos', '0' => 'Dolares'], ['class' => 'form-control', 'placeholder' => 'moneda']) }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -79,7 +79,7 @@
                     <div class="form-group">
                         {{ Form::label('tesaplica_cantidad', 'aplica_cantidad:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::select('tesaplica_beca', ['1' => 'Si', '0' => 'No'], ['class' => 'form-control', 'placeholder' => 'aplica_cantidad']) }}
+                            {{ Form::select('tesaplica_cantidad', ['1' => 'Si', '0' => 'No'], ['class' => 'form-control', 'placeholder' => 'aplica_cantidad']) }}
                         </div>
                     </div>
                     <div class="form-group">

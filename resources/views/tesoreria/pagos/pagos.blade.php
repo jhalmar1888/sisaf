@@ -46,20 +46,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($pagos as $pagos)
+                        @foreach($pagos as $pago)
                         <tr>
-                            <td>{{ $pagos->codigo}}</td>
-                            <td>{{ $pagos->descripcion }}</td>
-                            <td>{{ $pagos->unidad_academica }}</td>
-                            <td>{{ number_format($pagos->monto, 2, ',','.') }}</td>
-                            <td>{{ $pagos->moneda }}</td>
-                            <td>{{ $pagos->nivel }} </td>
-                            <td>{{ $pagos->control_pago }} </td>
-                            <td>{{ $pagos->aplica_beca }} </td>
-                            <td>{{ $pagos->aplica_cantidad }} </td>
-                            <td>{{ $pagos->aplica_multa }} </td>
-                            <td>{{ number_format($pagos->rubro, 2, ',','.') }}</td>
-                            <td>{{ number_format($pagos->categoria_programatica, 2, ',','.') }}</td>
+                            <td>{{ $pago->codigo}}</td>
+                            <td>{{ $pago->descripcion }}</td>
+                            <td>{{ $pago->unidad_academica }}</td>
+                            <td>{{ number_format($pago->monto, 2, ',','.') }}</td>
+                            <td>{{ $pago->monedas }}</td>
+                            <td>{{ $pago->nivels }} </td>
+                            <td>{{ $pago->control_pagos }} </td>
+                            <td>{{ $pago->aplica_becas }} </td>
+                            <td>{{ $pago->aplica_cantidads }} </td>
+                            <td>{{ $pago->aplica_multas }} </td>
+                            <td>{{ number_format($pago->rubro, 2, ',','.') }}</td>
+                            <td>{{ number_format($pago->categoria_programatica, 2, ',','.') }}</td>
                             {{--<td><a href="#">Modificar</a></td>--}}
                             {{--<td><a href="#">Eliminar</a></td>--}}
                             </tr>
