@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Entities\Alumno;
 use App\Entities\Beca;
 use App\Entities\Carrera;
+use App\Entities\cursos;
+use App\Entities\gestion;
+use App\Entities\pagos;
 use Illuminate\Http\Request;
 use Styde\Html\Facades\Alert;
 
@@ -123,4 +126,109 @@ class TesController extends Controller
 
         return redirect()->route('tes.getAlumnos');
     }
+    public function getGestion()
+    {
+        $gestion = gestion::paginate(50);
+//        dd($gestion[0]);
+
+        return view('tesoreria.gestion.gestion', compact('gestion'));
+    }
+
+    public function getAgregarGestion()
+    {
+        return view('tesoreria.gestion.agregargestion');
+    }
+
+    public function postAgregarGestion(Request $request)
+    {
+        $this->validate($request, [
+            'tescodigo'         => 'required',
+            'tesdescripcion'    => 'required',
+            'tesf_inicio'       => 'required',
+            'tesf_final'        => 'required',
+            'tesestado'         => 'required'
+        ]);
+
+        $gestion = new gestion();
+        $gestion->codigo = $request->tescodigo;
+        $gestion->descripcion = $request->tesdescripcion;
+        $gestion->f_inicio = $request->tesf_inicio;
+        $gestion->f_final = $request->tesf_final;
+        $gestion->estado = $request->tesestado;
+        $gestion->save();
+
+        Alert::message('Gestion agregada exitósamnte', 'success');
+
+        return redirect()->route('tes.getGestion');
+    }
+
+    public function getAgregarPagos()
+    {
+        return view('tesoreria.pagos.agregarpagos');
+    }
+
+    public function postAgregarPagos(Request $request)
+    {
+        $this->validate($request, [
+            'tescodigo'              => 'required',
+            'tesdescripcion'         => 'required',
+            'tesunidad_academica'    => 'required',
+            'tesmonto'               => 'required',
+            'tesmoneda'              => 'required',
+            'tesnivel'               => 'required',
+            'tescontrol_pago'        => 'required',
+            'tesaplica_beca'         => 'required',
+            'tesaplica_cantidad'     => 'required',
+            'tesaplica_multa'        => 'required',
+            'tesrubro'               => 'required',
+            'tescategoria_programatica'=> 'required',
+
+        ]);
+
+        $pagos = new pagos();
+        $pagos->codigo = $request->tescodigo;
+        $pagos->descripcion = $request->tesdescripcion;
+        $pagos->unidad_academica = $request->tesunidad_academica;
+        $pagos->monto = $request->tesmonto;
+        $pagos->moneda = $request->tesmoneda;
+        $pagos->nivel = $request->tesnivel;
+        $pagos->control_pago = $request->tescontrol_pago;
+        $pagos->aplica_beca = $request->tesaplica_beca;
+        $pagos->aplica_cantidad = $request->tesaplica_cantidad;
+        $pagos->aplica_multa = $request->tesaplica_multa;
+        $pagos->rubro = $request->tesrubro;
+        $pagos->categoria_programatica = $request->tescategoria_programatica;
+        $pagos->save();
+
+        Alert::message('Pago agregado exitósamnte', 'success');
+
+        return redirect()->route('tes.getPagos');
+    }
+
+    public function getAgregarCursos()
+    {
+        return view('tesoreria.cursos.agregarcursos');
+    }
+
+    public function postAgregarcursos(Request $request)
+    {
+        $this->validate($request, [
+            'tescodigo'                     => 'required',
+            'tesdescripcion'                => 'required',
+            'tesrequisito_curso_anterior'   => 'required',
+            'tesid_carrera'                 => 'required'
+        ]);
+
+        $cursos = new cursos();
+        $cursos->codigo = $request->tescodigo;
+        $cursos->descripcion = $request->tesdescripcion;
+        $cursos->requisito_curso_anterior = $request->tesrequisito_curso_anterior;
+        $cursos->id_carrera = $request->tesid_carrera;
+        $cursos->save();
+
+        Alert::message('Curso agregado exitósamnte', 'success');
+
+        return redirect()->route('tes.getCursos');
+    }
+
 }

@@ -123,3 +123,12 @@ $factory->define(\App\Entities\Alumno::class, function (\Faker\Generator $genera
 $factory->define(\App\Entities\Carrera::class, function (\Faker\Generator $generator){
     return [];
 });
+$factory->define(\App\Entities\gestion::class, function (\Faker\Generator $generator){
+    return [];
+});
+$factory->define(\App\Entities\pagos::class, function (\Faker\Generator $generator){
+    return [];
+});
+$factory->define(\App\Entities\cursos::class, function (\Faker\Generator $generator){
+    return [];
+});

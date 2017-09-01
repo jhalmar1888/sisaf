@@ -31,8 +31,6 @@ Route::post('agregar-beca', [
     'as'    => 'tes.postAgregarBeca'
 ]);
 
-
-
 Route::get('carreras', [
     'uses'  => 'TesController@getCarreras',
     'as'    => 'tes.getCarreras'
@@ -46,4 +44,48 @@ Route::get('agregar-carrera', [
 Route::post('agregar-carrera', [
     'uses'  => 'TesController@postAgregarCarrera',
     'as'    => 'tes.postAgregarCarrera'
+]);
+Route::get('gestion', [
+    'uses'  => 'TesController@getGestion',
+    'as'    => 'tes.getGestion'
+]);
+
+Route::get('agregar-gestion', [
+    'uses'  => 'TesController@getAgregarGestion',
+    'as'    => 'tes.getAgregarGestion'
+]);
+
+Route::post('agregar-gestion', [
+    'uses'  => 'TesController@postAgregarGestion',
+    'as'    => 'tes.postAgregarGestion'
+]);
+
+Route::get('pagos', [
+    'uses'  => 'TesController@getPagos',
+    'as'    => 'tes.getPagos'
+]);
+
+Route::get('agregar-pagos', [
+    'uses'  => 'TesController@getAgregarPagos',
+    'as'    => 'tes.getAgregarPagos'
+]);
+
+Route::post('agregar-pagos', [
+    'uses'  => 'TesController@postAgregarPagos',
+    'as'    => 'tes.postAgregarPagos'
+]);
+
+Route::get('cursos', [
+    'uses'  => 'TesController@getCursos',
+    'as'    => 'tes.getCursos'
+]);
+
+Route::get('agregar-cursos', [
+    'uses'  => 'TesController@getAgregarCursos',
+    'as'    => 'tes.getAgregarCursos'
+]);
+
+Route::post('agregar-cursos', [
+    'uses'  => 'TesController@postAgregarCursos',
+    'as'    => 'tes.postAgregarCursos'
 ]);

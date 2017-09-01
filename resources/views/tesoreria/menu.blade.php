@@ -13,6 +13,12 @@
                 <li><a href="{{ route('tes.getAgregarBeca') }}">Agregra Beca</a></li>
                 <li><a href="{{ route('tes.getCarreras') }}">Carreras</a></li>
                 <li><a href="{{ route('tes.getAgregarCarrera') }}">Agregar Carrera</a></li>
+                <li><a href="{{ route('tes.getGestion') }}">Gestion</a></li>
+                <li><a href="{{ route('tes.getAgregarGestion') }}">Agregar Gestion</a></li>
+                <li><a href="{{ route('tes.getPagos') }}">Pagos</a></li>
+                <li><a href="{{ route('tes.getAgregarPagos') }}">Agregar Pago</a></li>
+                <li><a href="{{ route('tes.getCursos') }}">Cursos</a></li>
+                <li><a href="{{ route('tes.getAgregarCursos') }}">Agregar Cursos</a></li>
             </ul>
         </li>
         {{--<li class="has-sub">--}}
