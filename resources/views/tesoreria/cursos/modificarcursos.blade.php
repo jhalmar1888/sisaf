@@ -35,6 +35,7 @@
                             {{ Form::text('tescodigo', $cursos->codigo, ['class' => 'form-control', 'placeholder' => 'codigo']) }}
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         {{ Form::label('tesdescripcion', 'descripcion:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
