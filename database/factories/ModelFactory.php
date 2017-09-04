@@ -70,3 +70,56 @@ $factory->define(\App\Entities\Contcomprobante::class, function (\Faker\Generato
 $factory->define(\App\Entities\Contregistro::class, function (\Faker\Generator $generator){
     return [];
 });
+
+$factory->define(\App\Entities\Arma::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Grado::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Especialidad::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\EstadoCivil::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Cargo::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Persona::class, function (\Faker\Generator $faker){
+    return [
+        'ci' => $faker->unique()->numberBetween($min=10, $max=1000000),
+        'paterno'   => $faker->lastName,
+        'materno'   => $faker->lastName,
+        'nombres'   => $faker->name,
+        'exp'       => 'LP',
+        'fechanacimiento'   => $faker->date('Y-m-d', 'now'),
+        'lugarnacimiento'   => $faker->citySuffix,
+        'id_sangre' => '1',
+        'genero'    => 'masculino',
+        'id_estadocivil' => '1',
+        'telefono' => $faker->numberBetween($min=10000, $max=100000000),
+        'direccion' => $faker->streetAddress,
+    ];
+});
+
+$factory->define(\App\Entities\Sangre::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Beca::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Alumno::class, function (\Faker\Generator $generator){
+    return [];
+});
+
+$factory->define(\App\Entities\Carrera::class, function (\Faker\Generator $generator){
+    return [];
+});

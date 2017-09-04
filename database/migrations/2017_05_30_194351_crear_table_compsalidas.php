@@ -16,12 +16,12 @@ class CrearTableCompsalidas extends Migration
         Schema::create('compsalidas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('proyecto');
-            $table->string('id_ciudad', 10);
+            $table->unsignedInteger('id_unidad');
             $table->string('motivo');
             $table->date('fecha');
 
-            $table->foreign('id_ciudad')
-                ->references('id')->on('ciudades')
+            $table->foreign('id_unidad')
+                ->references('id')->on('unidades')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

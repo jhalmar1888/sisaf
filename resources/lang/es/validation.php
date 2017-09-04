@@ -119,7 +119,8 @@ return [
 
 
         // para rrhh
-        'rrhh_id_grado'     => 'grados',
+        'rrhh_id_grado'     => 'Grados',
+        'rhcargo'           => 'Cargo',
 
 
         // para almacenes
@@ -130,6 +131,13 @@ return [
         'almpusf'           => 'Precio Unidad s/factura',
         'almpucf'           => 'Precio Undiad c/factura',
         'almdescripcion'    => 'Descripcion',
+        'almproyecto'       => 'Proyecto',
+        'almmotivo'         => 'Motivo',
+        'almfsalida'        => 'Fecha de Salida',
+        'almcantidad'       => 'Cantidad',
+        'almid_articulo'    => 'Articulo',
+        'almdireccion'      => 'Direccion',
+        'almtelefono'       => 'Telefono',
 
 
 

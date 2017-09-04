@@ -15,7 +15,7 @@ class CrearTableEspecialidades extends Migration
     {
         Schema::create('especialidades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('especialidades');
+            $table->string('especialidad');
             $table->boolean('activo')->default(true);
         });
     }

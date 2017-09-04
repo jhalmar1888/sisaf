@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Entities\ComprobanteIngreso;
+use App\Entities\ComprobanteSalida;
 use App\Entities\KardexCentral;
 use App\Entities\KardexIngreso;
+use App\Entities\KardexSalida;
 use App\Entities\Material;
 use App\Entities\Partida;
 use App\Entities\Proveedor;
 use App\Entities\TipoUnidad;
+use App\Entities\Unidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
@@ -163,6 +166,89 @@ class AlmacenController extends Controller
         return redirect()->route('almacen.getComprobanteIngresoKardex', $request->id_compingreso);
     }
 
+
+
+
+    public function getComprobantesSalida()
+    {
+        $compsalidas = ComprobanteSalida::paginate(50);
+
+        return view('almacenes.movimientos.comprobantessalida', compact('compsalidas'));
+    }
+
+    public function getAgregarComprobanteSalida()
+    {
+        $unidades = Unidad::pluck('unidad', 'id');
+
+        return view('almacenes.movimientos.agregarcomprobantesalida', compact('unidades'));
+    }
+
+    public function postAgregarComprobanteSalida(Request $request)
+    {
+        $this->validate($request, [
+            'almproyecto'   => 'required',
+            'almid_unidad'  => 'required',
+            'almmotivo'     => 'required',
+            'almfsalida'    => 'required'
+        ]);
+
+        $compsalida = new ComprobanteSalida;
+        $compsalida->proyecto = $request->almproyecto;
+        $compsalida->id_unidad = $request->almid_unidad;
+        $compsalida->motivo = $request->almmotivo;
+        $compsalida->fecha = $request->almfsalida;
+        $compsalida->save();
+
+        Alert::message('Comprobante agergado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getComprobantesSalida');
+    }
+
+    public function getComprobanteSalidaKardex($id_compsalida)
+    {
+        $comprobante = ComprobanteSalida::findOrFail($id_compsalida);
+        $articulos = KardexSalida::where('id_compsalidas', $id_compsalida)
+            ->get();
+
+        return view('almacenes.movimientos.comprobantessalidakardex', compact('comprobante', 'articulos'));
+    }
+
+    public function getAgregarArticuloCS($id_compsalida)
+    {
+        $comprobante = ComprobanteSalida::findOrFail($id_compsalida);
+        $articulos = Material::pluck('descripcion', 'id');
+
+        return view('almacenes.movimientos.agregararticulocomprobantesalida', compact('comprobante', 'articulos'));
+    }
+
+    public function postAgregarArticuloCS(Request $request)
+    {
+        $artbuscado = KardexCentral::where('id_material', $request->almid_articulo)->first();
+        if ($artbuscado) $maximo = $artbuscado->cantidad;
+        else $maximo = 0;
+        $this->validate($request, [
+            'id_compsalida'     => 'required',
+            'almid_articulo'    => 'required|exists:kardexcentral,id_material',
+            'almcantidad'       => 'required|numeric|min:1|max:' . $maximo
+        ]);
+
+        $articulo = KardexCentral::where('id_material', $request->almid_articulo)->first();
+        $articulo->cantidad = $articulo->cantidad - $request->almcantidad;
+        $articulo->save();
+
+        $art = Material::findOrFail($request->almid_articulo);
+        $comprobante = new KardexSalida;
+        $comprobante->id_compsalidas = $request->id_compsalida;
+        $comprobante->id_material = $request->almid_articulo;
+        $comprobante->cantidades = $request->almcantidad;
+        $comprobante->ptotal = $art->pusf * $request->almcantidad;
+        $comprobante->save();
+
+        Alert::message('Articulo agregado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getComprobanteSalidaKardex', $request->id_compsalida);
+    }
+
     /***** para los proveedores ************/
 
     public function getProveedores()
@@ -180,11 +266,15 @@ class AlmacenController extends Controller
     public function postAgregarProveedor(Request $request)
     {
         $this->validate($request, [
-            'almproveedor' => 'required'
+            'almproveedor'  => 'required',
+            'almdireccion'  => 'required',
+            'almtelefono'   => 'required|numeric|min:0|max:99999999'
         ]);
 
         $proveedor = new Proveedor;
         $proveedor->proveedor = $request->almproveedor;
+        $proveedor->direccion = $request->almdireccion;
+        $proveedor->telefono = $request->almtelefono;
         $proveedor->save();
 
         Alert::message('Proveedor agergado exitósamente', 'success');

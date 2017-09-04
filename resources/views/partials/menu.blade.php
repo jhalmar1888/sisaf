@@ -11,7 +11,7 @@
 @endif
 
 @if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'RR.HH.')
-    @include('administrador.menu')
+    @include('rrhh.menu')
 @endif
 
 @if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Almacen')

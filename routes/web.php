@@ -54,4 +54,7 @@ Route::group(['middleware' => 'auth'], function (){
     /** @noinspection PhpIncludeInspection */
     require base_path('routes/contabilidad.php');
 
+    /** @noinspection PhpIncludeInspection */
+    require base_path('routes/rrhh.php');
+
 });

@@ -17,10 +17,19 @@ class DatabaseSeeder extends Seeder
         $this->call(UnidadesTableSeeder::class);
         $this->call(UsuarioSeeder::class);
         $this->call(PartidasTableSeederMio::class);
+        $this->call(ArmasSeeder::class);
+        $this->call(GradosSeeeder::class);
+        $this->call(EspecialidadesSeeder::class);
+        $this->call(EstadoscilivesSeeder::class);
+        $this->call(CargosSeeder::class);
+        $this->call(SangreSeeder::class);
+        $this->call(PersonaSeeder::class);
 
         $this->call(TipoUnidadesSeeder::class);
         $this->call(ProbjetosSeeder::class);
         $this->call(ContobjetosSeeder::class);
+
+        $this->call(TesTableSeeder::class);
 
     }
 }
