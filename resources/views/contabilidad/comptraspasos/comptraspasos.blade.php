@@ -13,7 +13,7 @@
 @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Comprobantes de Ingresos</h1>
+    <h1 class="page-header">Comprobantes de Traspaso</h1>
 @endsection
 
 @section('contenido')
@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <div class="panel panel-inverse">
                 <div class="panel-heading">
-                    <h4 class="panel-title">Comprobantes de Ingresos</h4>
+                    <h4 class="panel-title">Comprobantes de Traspasos</h4>
                 </div>
                 <div class="panel-body">
                     {!! Alert::render() !!}
@@ -41,8 +41,8 @@
                             <td>{{ $comprobante->id }}</td>
                             <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $comprobante->fecha)->format('d/m/Y') }}</td>
                             <td>{{ $comprobante->glosa }}</td>
-                            <td style="text-align: center"><a href="{{ route('contabilidad.getDetalleCI', $comprobante->id) }}">Ingresar</a></td>
-                            <td style="text-align: center"><a href="{{ route('contabilidad.getAgregarDetalleCI', $comprobante->id) }}">Agregar Registros</a></td>
+                            <td style="text-align: center"><a href="{{ route('contabilidad.getDetalleCT', $comprobante->id) }}">Ingresar</a></td>
+                            <td style="text-align: center"><a href="{{ route('contabilidad.getAgregarDetalleCT', $comprobante->id) }}">Agregar Registros</a></td>
                         </tr>
                         @endforeach
                         </tbody>

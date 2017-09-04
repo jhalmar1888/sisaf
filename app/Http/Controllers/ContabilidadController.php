@@ -228,6 +228,7 @@ class ContabilidadController extends Controller
 
     // comprobantes
 
+    //comprobantes de ingresos
 
     public function getComprobantesIngreso()
     {
@@ -322,7 +323,198 @@ class ContabilidadController extends Controller
         return redirect()->route('contabilidad.getDetalleCI', $request->id_comprobante);
     }
 
+    //comprobantes de egresos
 
+    public function getComprobantesEgreso()
+    {
+        $comprobantes = Contcomprobante::where('tipo', '2')
+            ->paginate(50);
+
+        return view('contabilidad.compegresos.compegresos', compact('comprobantes'));
+    }
+
+    public function getAgregarComprobanteEgreso()
+    {
+        $unidades = Unidad::pluck('unidad', 'id');
+
+        return view('contabilidad.compegresos.agregarcompegreso', compact('unidades'));
+    }
+
+    public function postAgregarComprobanteEgreso(Request $request)
+    {
+        $this->validate($request, [
+            'confuente' => 'required',
+            'condocref' => 'required',
+            'contcambio' => 'required',
+            'confecha'  => 'required',
+            'conid_unidad' => 'required',
+            'conglosa'  => 'required',
+            'coninteresados' => 'required'
+        ]);
+
+        $comp = new Contcomprobante;
+        $comp->tipo = '2';
+        $comp->fuente = $request->confuente;
+        $comp->fecha = Carbon::createFromFormat('d/m/Y', $request->confecha)->format('Y-m-d');
+        $comp->id_unidad = $request->conid_unidad;
+        $comp->glosa = $request->conglosa;
+        $comp->interesado = $request->interesados;
+        $comp->docref = $request->condocref;
+        $comp->cheque = $request->concheque;
+        $comp->tcambio = $request->contcambio;
+        $comp->save();
+
+        Alert::message('Objeto agregado exitósamnte', 'success');
+
+        return redirect()->route('contabilidad.getComprobantesEgreso');
+    }
+
+    public function getDetalleCE($id_comprobante)
+    {
+        $comprobante = Contcomprobante::findOrFail($id_comprobante);
+        $registros = Contregistro::where('id_contcomprobante', $comprobante->id)->get();
+
+        $sumadebe = Contregistro::where('id_contcomprobante', $comprobante->id)
+            ->where('tiporeg', 'debe')
+            ->get()
+            ->sum('valor');
+
+        $sumahaber = Contregistro::where('id_contcomprobante', $comprobante->id)
+            ->where('tiporeg', 'haber')
+            ->get()
+            ->sum('valor');
+
+        return view('contabilidad.compegresos.detallecompeg', compact('comprobante', 'registros', 'sumadebe', 'sumahaber'));
+    }
+
+    public function getAgregarDetalleCE($id_comprobante)
+    {
+        $comprobante = Contcomprobante::findOrFail($id_comprobante);
+
+        $objetos = Contobjeto::pluck('detalle', 'id');
+        $tiporeg = ['debe' => 'DEBE', 'haber' => 'HABER'];
+
+        return view('contabilidad.compegresos.agregarregistrocompegreso', compact('comprobante', 'objetos', 'tiporeg'));
+    }
+
+    public function postAgregarDetalleCE(Request $request)
+    {
+        $this->validate($request, [
+            'id_comprobante' => 'required',
+            'conid_objeto'  => 'required',
+            'contipo'       => 'required',
+            'concantidad'   => 'required|min:0'
+        ]);
+
+        $registro = new Contregistro;
+        $registro->id_contcomprobante = $request->id_comprobante;
+        $registro->id_contobjeto = $request->conid_objeto;
+        $registro->valor = $request->concantidad;
+        $registro->tiporeg = $request->contipo;
+        $registro->save();
+
+        Alert::message('Objeto agregado exitósamnte', 'success');
+
+        return redirect()->route('contabilidad.getDetalleCE', $request->id_comprobante);
+    }
+
+    //comprobantes de traspasos
+
+    public function getComprobantesTraspaso()
+    {
+        $comprobantes = Contcomprobante::where('tipo', '3')
+            ->paginate(50);
+
+        return view('contabilidad.comptraspasos.comptraspasos', compact('comprobantes'));
+    }
+
+    public function getAgregarComprobanteTraspaso()
+    {
+        $unidades = Unidad::pluck('unidad', 'id');
+
+        return view('contabilidad.comptraspasos.agregarcomptraspaso', compact('unidades'));
+    }
+
+    public function postAgregarComprobanteTraspaso(Request $request)
+    {
+        $this->validate($request, [
+            'confuente' => 'required',
+            'condocref' => 'required',
+            'contcambio' => 'required',
+            'confecha'  => 'required',
+            'conid_unidad' => 'required',
+            'conglosa'  => 'required',
+            'coninteresados' => 'required'
+        ]);
+
+        $comp = new Contcomprobante;
+        $comp->tipo = '3';
+        $comp->fuente = $request->confuente;
+        $comp->fecha = Carbon::createFromFormat('d/m/Y', $request->confecha)->format('Y-m-d');
+        $comp->id_unidad = $request->conid_unidad;
+        $comp->glosa = $request->conglosa;
+        $comp->interesado = $request->interesados;
+        $comp->docref = $request->condocref;
+        $comp->cheque = $request->concheque;
+        $comp->tcambio = $request->contcambio;
+        $comp->save();
+
+        Alert::message('Objeto agregado exitósamnte', 'success');
+
+        return redirect()->route('contabilidad.getComprobantesTraspaso');
+    }
+
+    public function getDetalleCT($id_comprobante)
+    {
+        $comprobante = Contcomprobante::findOrFail($id_comprobante);
+        $registros = Contregistro::where('id_contcomprobante', $comprobante->id)->get();
+
+        $sumadebe = Contregistro::where('id_contcomprobante', $comprobante->id)
+            ->where('tiporeg', 'debe')
+            ->get()
+            ->sum('valor');
+
+        $sumahaber = Contregistro::where('id_contcomprobante', $comprobante->id)
+            ->where('tiporeg', 'haber')
+            ->get()
+            ->sum('valor');
+
+        return view('contabilidad.comptraspasos.detallecomptra', compact('comprobante', 'registros', 'sumadebe', 'sumahaber'));
+    }
+
+    public function getAgregarDetalleCT($id_comprobante)
+    {
+        $comprobante = Contcomprobante::findOrFail($id_comprobante);
+
+        $objetos = Contobjeto::pluck('detalle', 'id');
+        $tiporeg = ['debe' => 'DEBE', 'haber' => 'HABER'];
+
+        return view('contabilidad.comptraspasos.agregarregistrocomptraspaso', compact('comprobante', 'objetos', 'tiporeg'));
+    }
+
+    public function postAgregarDetalleCT(Request $request)
+    {
+        $this->validate($request, [
+            'id_comprobante' => 'required',
+            'conid_objeto'  => 'required',
+            'contipo'       => 'required',
+            'concantidad'   => 'required|min:0'
+        ]);
+
+        $registro = new Contregistro;
+        $registro->id_contcomprobante = $request->id_comprobante;
+        $registro->id_contobjeto = $request->conid_objeto;
+        $registro->valor = $request->concantidad;
+        $registro->tiporeg = $request->contipo;
+        $registro->save();
+
+        Alert::message('Objeto agregado exitósamnte', 'success');
+
+        return redirect()->route('contabilidad.getDetalleCT', $request->id_comprobante);
+    }
+
+
+/// libro mayor
     public function getLibroMayor()
     {
         $registros = Contregistro::where('valor', '>', 0)
@@ -338,5 +530,13 @@ class ContabilidadController extends Controller
             ->sum('valor');
 
         return view('contabilidad.libromayor', compact('registros', 'sumadebe', 'sumahaber'));
+    }
+
+
+    //sumas y saldos
+
+    public function getSumasySaldos()
+    {
+        return view('contabilidad.sumasysaldos.compsumasysaldos');
     }
 }

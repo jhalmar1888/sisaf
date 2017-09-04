@@ -13,7 +13,7 @@
 @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Comprobantes de Ingreso</h1>
+    <h1 class="page-header">Comprobantes de Traspaso</h1>
 @endsection
 
 @section('contenido')
