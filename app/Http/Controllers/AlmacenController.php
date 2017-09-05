@@ -62,12 +62,36 @@ class AlmacenController extends Controller
 
     public function getModificarArticulo($id_articulo)
     {
-        
+        $articulo = Material::findOrFail($id_articulo);
+        $partidas = Partida::pluck('partida', 'id');
+        $tipo = TipoUnidad::pluck('tipo', 'id');
+
+        return view('almacenes.articulos.modificararticulo', compact('articulo', 'partidas', 'tipo'));
     }
 
     public function postModificarArticulo(Request $request)
     {
-        
+        $this->validate($request, [
+            'almcodigo' => 'required',
+            'almid_partida' => 'required',
+            'almdescripcion'    => 'required',
+            'almtipounidad'     => 'required',
+            'almpusf'           => 'required',
+            'almpucf'           => 'required'
+        ]);
+
+        $material = Material::findOrFail($request->antiguo_id);
+        $material->codigo = $request->almcodigo;
+        $material->id_partida = $request->almid_partida;
+        $material->descripcion = $request->almdescripcion;
+        $material->id_tipounidad = $request->almtipounidad;
+        $material->pusf = $request->almpusf;
+        $material->pucf = $request->almpucf;
+        $material->save();
+
+        Alert::message('Articulo modificado exitósamnte', 'success');
+
+        return redirect()->route('almacen.getArticulos');
     }
     
     /**************** para los almacenes **************/
@@ -268,13 +292,22 @@ class AlmacenController extends Controller
         $this->validate($request, [
             'almproveedor'  => 'required',
             'almdireccion'  => 'required',
-            'almtelefono'   => 'required|numeric|min:0|max:99999999'
+            'almtelefono'   => 'required|numeric|min:0|max:99999999',
+            'almempresa'    => 'required',
+            'almnit'        => 'required|numeric|min:0|max:99999999',
+            'almemail'      => 'required',
+            'almdescripcion'=> 'required'
         ]);
 
         $proveedor = new Proveedor;
-        $proveedor->proveedor = $request->almproveedor;
-        $proveedor->direccion = $request->almdireccion;
-        $proveedor->telefono = $request->almtelefono;
+        $proveedor->proveedor   = $request->almproveedor;
+        $proveedor->direccion   = $request->almdireccion;
+        $proveedor->telefono    = $request->almtelefono;
+        $proveedor->empresa     = $request->almempresa;
+        $proveedor->nit         = $request->almnit;
+        $proveedor->email       = $request->almemail;
+        $proveedor->descripcion = $request->almdescripcion;
+
         $proveedor->save();
 
         Alert::message('Proveedor agergado exitósamente', 'success');

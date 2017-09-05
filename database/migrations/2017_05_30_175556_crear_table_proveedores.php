@@ -17,7 +17,11 @@ class CrearTableProveedores extends Migration
             $table->increments('id');
             $table->string('proveedor');
             $table->string('direccion');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
+            $table->string('empresa');
+            $table->string('nit')->nullable();
+            $table->string('email');
+            $table->string('descripcion');
         });
     }
 

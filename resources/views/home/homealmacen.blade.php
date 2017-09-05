@@ -5,15 +5,18 @@
 @endsection
 
 @section('rutas')
-    <ol class="breadcrumb pull-right">
+    <!-- <ol class="breadcrumb pull-right">
         <li>Home</li>
         <li>Page Options</li>
         <li class="active">Blank Page</li>
+    </ol>-->
+    <ol class="breadcrumb pull-right">
+    <img src="img/logo.jpeg" data-id="login-cover-image" alt="" width="100px" height="60px" />
     </ol>
-@endsection
+    @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Usuarios</h1>
+    <h1 class="page-header">Almacen de la Escuela Militar de Ingeníeria</h1>
 @endsection
 
 @section('contenido')

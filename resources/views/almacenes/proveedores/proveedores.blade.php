@@ -29,9 +29,13 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>Proveedor</th>
+                            <th>Representante</th>
                             <th>Direccion</th>
                             <th>Telefono</th>
+                            <th>Empresa</th>
+                            <th>NIT</th>
+                            <th>E-Mail</th>
+                            <th>Descripción</th>
                             {{--<th style="text-align: center" colspan="2">Opciones</th>--}}
                             {{--<th>Opciones</th>--}}
                         </tr>
@@ -42,7 +46,11 @@
                             <td>{{ $proveedor->proveedor }}</td>
                             <td>{{ $proveedor->direccion }}</td>
                             <td>{{ $proveedor->telefono }}</td>
-                            {{--<td><a href="#">Eliminar</a></td>--}}
+                            <td>{{ $proveedor->empresa }}</td>
+                            <td>{{ $proveedor->nit }}</td>
+                            <td>{{ $proveedor->email }}</td>
+                            <td>{{ $proveedor->descripcion }}</td>
+                           {{--<td><a href="#">Eliminar</a></td>--}}
                             </tr>
                         @endforeach
                         </tbody>

@@ -89,8 +89,8 @@ Route::get('modificar-articulo/{id_articulo}', [
     'as'    => 'almacen.getModificarArticulo'
 ]);
 
-Route::post('modificar-articulo', [
-    'uses'  => 'AlmacenController@gpostModificarArticulo',
+Route::post ('modificar-articulo', [
+    'uses'  => 'AlmacenController@postModificarArticulo',
     'as'    => 'almacen.postModificarArticulo'
 ]);
 
