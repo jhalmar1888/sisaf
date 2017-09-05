@@ -119,7 +119,8 @@
         <li><a href="#">Agregar SubCuentas Contables</a></li>
         <li><a href="#">Tipo de Monedas</a></li>
         <li><a href="#">Estados Financieros de Subcuentas</a></li>
-        <li><a href="{{ route('contabilidad.getSumasySaldos') }}">Balance General</a></li>
+        <li><a href="{{ route('contabilidad.getSumasySaldos') }}">Balance de Sumas y Saldos</a></li>
+        <li><a href="{{ route('contabilidad.getBalanceGenerales') }}">Balance General</a></li>
         </ul>
         </li>
 

@@ -123,8 +123,6 @@ Route::post('agregar-detalle-comprobante-de-traspaso', [
     'as'    => 'contabilidad.postAgregarDetalleCT'
 ]);
 
-
-
 // apartir de aqui libro mayor
 
 Route::get('libro-mayor', [
@@ -139,4 +137,11 @@ Route::get('libro-mayor', [
 Route::get('sumasysaldos', [
     'uses'  => 'ContabilidadController@getSumasySaldos',
     'as'    => 'contabilidad.getSumasySaldos'
+]);
+
+//balances generales
+
+Route::get('balancesgenerales', [
+    'uses'  => 'ContabilidadController@getBalanceGenerales',
+    'as'    => 'contabilidad.getBalanceGenerales'
 ]);

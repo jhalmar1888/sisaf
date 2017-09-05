@@ -539,4 +539,9 @@ class ContabilidadController extends Controller
     {
         return view('contabilidad.sumasysaldos.compsumasysaldos');
     }
+
+    public function getBalanceGenerales()
+    {
+        return view('contabilidad.balancesgenerales.compbalancesgenerales');
+    }
 }
