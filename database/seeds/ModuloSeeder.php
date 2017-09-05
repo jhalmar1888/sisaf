@@ -34,6 +34,8 @@ class ModuloSeeder extends Seeder
         factory(\App\Entities\Modulo::class)->create([
             'modulo' => 'Presupuestos'
         ]);
-
+        factory(\App\Entities\Modulo::class)->create([
+            'modulo' => 'Cobranza'
+        ]);
     }
 }

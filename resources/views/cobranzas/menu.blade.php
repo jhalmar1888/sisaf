@@ -4,7 +4,7 @@
             <a href="javascript:;">
                 <b class="caret pull-right"></b>
                 <i class="fa fa-users"></i>
-                <span>Usuarios</span>
+                <span>Cobranzas</span>
             </a>
             <ul class="sub-menu">
                 <li><a href="{{ route('superadmin.getUsuarios') }}">Mostrar Usuarios</a></li>
