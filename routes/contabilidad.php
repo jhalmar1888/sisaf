@@ -145,3 +145,9 @@ Route::get('balancesgenerales', [
     'uses'  => 'ContabilidadController@getBalanceGenerales',
     'as'    => 'contabilidad.getBalanceGenerales'
 ]);
+//Estado de Cuentas
+
+Route::get('estado-de-cuentas', [
+    'uses'  => 'ContabilidadController@getEstadodeCuentas',
+    'as'    => 'contabilidad.getEstadodeCuentas'
+]);

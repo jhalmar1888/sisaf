@@ -544,4 +544,8 @@ class ContabilidadController extends Controller
     {
         return view('contabilidad.balancesgenerales.compbalancesgenerales');
     }
+    public function getEstadodeCuentas()
+    {
+        return view('contabilidad.estadodecuentas.compestadodecuentas');
+    }
 }

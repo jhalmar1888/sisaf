@@ -7,8 +7,8 @@
             <span>Objetos</span>
         </a>
         <ul class="sub-menu">
-            <li><a href="{{ route('contabilidad.getObjetos') }}">Ver Objetos</a></li>
-            <li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Objetos</a></li>
+            <li><a href="{{ route('contabilidad.getObjetos') }}">Ver Cuentas</a></li>
+            <li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Cuentas Contables</a></li>
         </ul>
     </li>
 
@@ -119,6 +119,7 @@
         <li><a href="#">Agregar SubCuentas Contables</a></li>
         <li><a href="#">Tipo de Monedas</a></li>
         <li><a href="#">Estados Financieros de Subcuentas</a></li>
+        <li><a href="{{ route('contabilidad.getEstadodeCuentas') }}">Estados de Cuentas</a></li>
         <li><a href="{{ route('contabilidad.getSumasySaldos') }}">Balance de Sumas y Saldos</a></li>
         <li><a href="{{ route('contabilidad.getBalanceGenerales') }}">Balance General</a></li>
         </ul>
