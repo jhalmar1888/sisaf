@@ -8,5 +8,5 @@
 
 return [
     'titulo'        => 'Sistema Administrativo Financiero"',
-    'autor'         => 'Charlie Seoane Sánchez'
+    'autor'         => 'Sgtos. Ejercito TUS'
 ];
