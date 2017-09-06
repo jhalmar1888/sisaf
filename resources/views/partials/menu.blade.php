@@ -21,3 +21,7 @@
 @if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Presupuestos')
     @include('presupuestos.menu')
 @endif
+
+@if(\Illuminate\Support\Facades\Auth::user()->modulo->modulo == 'Cobranza')
+    @include('cobranzas.menu')
+@endif
