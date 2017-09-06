@@ -29,7 +29,7 @@
                     <table class="table table-hover">
                         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
                             <label>
-                                <tr>  <p>ESCUELA MILITAR DE INGENIERIA</P>
+                                <tr>  <p>ESCUELA MILITAR DE INGENIERIAhhhhh</P>
                                     <p>LA PAZ - BOLIVIA</p></tr>
                                 <tr>  <center><h1>INFORME</h1></center></tr>
                                 <tr> --------------------------</tr>
