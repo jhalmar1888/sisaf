@@ -32,7 +32,7 @@
                 <span>Sumas y Saldos</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="{{ route('contabilidad.getLibroMayor') }}">Ver Suma y Saldos</a></li>
+                <li><a href="{{ route('contabilidad.getSumasySaldos') }}">Ver Suma y Saldos</a></li>
                 {{--<li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Objetos</a></li>--}}
             </ul>
         </li>
@@ -94,17 +94,17 @@
     @if(\Illuminate\Support\Facades\Auth::user()->rol->rol == 'usuario_cargosdecuenta' ||
     \Illuminate\Support\Facades\Auth::user()->rol->rol == 'administrador')
 
-        <li class="has-sub">
-            <a href="javascript:;">
-                <b class="caret pull-right"></b>
-                <i class="fa fa-users"></i>
-                <span>Reportes</span>
-            </a>
-            <ul class="sub-menu">
-                <li><a href="#">Ver Comprobantes de Traspasos</a></li>
-                <li><a href="#">Agregar Comprobantes de Traspasos</a></li>
-            </ul>
-        </li>
+        {{--<li class="has-sub">--}}
+            {{--<a href="javascript:;">--}}
+                {{--<b class="caret pull-right"></b>--}}
+                {{--<i class="fa fa-users"></i>--}}
+                {{--<span>Reportes</span>--}}
+            {{--</a>--}}
+            {{--<ul class="sub-menu">--}}
+                {{--<li><a href="#">Ver Comprobantes de Traspasos</a></li>--}}
+                {{--<li><a href="#">Agregar Comprobantes de Traspasos</a></li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
 
         <li class="has-sub">
         <a href="javascript:;">
