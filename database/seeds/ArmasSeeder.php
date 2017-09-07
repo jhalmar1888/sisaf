@@ -12,9 +12,8 @@ class ArmasSeeder extends Seeder
     public function run()
     {
         factory(\App\Entities\Arma::class)->create([
-            'arma' => ''
+            'arma' => 'Inf.'
         ]);
-
         factory(\App\Entities\Arma::class)->create([
             'arma' => 'Cab.'
         ]);
@@ -25,10 +24,6 @@ class ArmasSeeder extends Seeder
 
         factory(\App\Entities\Arma::class)->create([
             'arma' => 'Com.'
-        ]);
-
-        factory(\App\Entities\Arma::class)->create([
-            'arma' => 'Inf.'
         ]);
 
         factory(\App\Entities\Arma::class)->create([

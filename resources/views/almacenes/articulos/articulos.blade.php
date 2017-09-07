@@ -48,7 +48,7 @@
                             <td>{{ $articulo->tipounidad->tipo }}</td>
                             <td>Bs. {{ number_format($articulo->pusf, 3, ',','.') }}</td>
                             <td>Bs. {{ number_format($articulo->pucf, 3, ',','.') }}</td>
-                            <td><a href="#">Modificar</a></td>
+                            <td><a href="{{ route('almacen.getModificarArticulo', $articulo->id) }}">Modificar</a></td>
                             {{--<td><a href="#">Eliminar</a></td>--}}
                             </tr>
                         @endforeach

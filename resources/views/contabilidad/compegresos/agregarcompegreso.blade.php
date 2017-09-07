@@ -13,7 +13,7 @@
 @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Agregar Comprobante de Ingreso</h1>
+    <h1 class="page-header">Agregar Comprobante de Egreso</h1>
 @endsection
 
 @section('contenido')
@@ -26,7 +26,7 @@
                 </div>
                 @include('partials.errors')
                 <div class="panel-body panel-form">
-                    {{ Form::open(['route' => 'contabilidad.postAgregarComprobanteIngreso', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
+                    {{ Form::open(['route' => 'contabilidad.postAgregarComprobanteEgreso', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
 
                     <div class="form-group">
                         {{ Form::label('confuente', 'Fuente:', ['class' => 'control-label col-md-4 col-sm-4']) }}

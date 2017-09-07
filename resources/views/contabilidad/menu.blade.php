@@ -7,8 +7,8 @@
             <span>Objetos</span>
         </a>
         <ul class="sub-menu">
-            <li><a href="{{ route('contabilidad.getObjetos') }}">Ver Objetos</a></li>
-            <li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Objetos</a></li>
+            <li><a href="{{ route('contabilidad.getObjetos') }}">Ver Cuentas</a></li>
+            <li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Cuentas Contables</a></li>
         </ul>
     </li>
 
@@ -25,6 +25,19 @@
                 {{--<li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Objetos</a></li>--}}
             </ul>
         </li>
+        <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-users"></i>
+                <span>Sumas y Saldos</span>
+            </a>
+            <ul class="sub-menu">
+                <li><a href="{{ route('contabilidad.getSumasySaldos') }}">Ver Suma y Saldos</a></li>
+                {{--<li><a href="{{ route('contabilidad.getAgregarObjeto') }}">Agregar Objetos</a></li>--}}
+            </ul>
+        </li>
+
+
 
     @endif
 
@@ -55,8 +68,8 @@
             <span>Comprobantes de Egresos</span>
         </a>
         <ul class="sub-menu">
-            <li><a href="#">Ver Comprobantes de Egresos</a></li>
-            <li><a href="#">Agregar Comprobantes de Egresos</a></li>
+            <li><a href="{{ route('contabilidad.getComprobantesEgreso') }}">Ver Comprobantes de Egresos</a></li>
+            <li><a href="{{ route('contabilidad.getAgregarComprobanteEgreso') }}">Agregar Comprobantes de Egresos</a></li>
         </ul>
     </li>
 
@@ -72,9 +85,44 @@
                 <span>Comprobantes de Traspasos</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="#">Ver Comprobantes de Traspasos</a></li>
-                <li><a href="#">Agregar Comprobantes de Traspasos</a></li>
+                <li><a href="{{ route('contabilidad.getComprobantesTraspaso') }}">Ver Comprobantes de Traspasos</a></li>
+                <li><a href="{{ route('contabilidad.getAgregarComprobanteTraspaso') }}">Agregar Comprobantes de Traspasos</a></li>
             </ul>
+        </li>
+
+    @endif
+    @if(\Illuminate\Support\Facades\Auth::user()->rol->rol == 'usuario_cargosdecuenta' ||
+    \Illuminate\Support\Facades\Auth::user()->rol->rol == 'administrador')
+
+        {{--<li class="has-sub">--}}
+            {{--<a href="javascript:;">--}}
+                {{--<b class="caret pull-right"></b>--}}
+                {{--<i class="fa fa-users"></i>--}}
+                {{--<span>Reportes</span>--}}
+            {{--</a>--}}
+            {{--<ul class="sub-menu">--}}
+                {{--<li><a href="#">Ver Comprobantes de Traspasos</a></li>--}}
+                {{--<li><a href="#">Agregar Comprobantes de Traspasos</a></li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
+
+        <li class="has-sub">
+        <a href="javascript:;">
+        <b class="caret pull-right"></b>
+        <i class="fa fa-users"></i>
+        <span>Contabilidad</span>
+        </a>
+        <ul class="sub-menu">
+        <li><a href="#">Cuentas Contables</a></li>
+        <li><a href="#">Agregar Cuentas Contables</a></li>
+        <li><a href="#">Subcuentas</a></li>
+        <li><a href="#">Agregar SubCuentas Contables</a></li>
+        <li><a href="#">Tipo de Monedas</a></li>
+        <li><a href="#">Estados Financieros de Subcuentas</a></li>
+        <li><a href="{{ route('contabilidad.getEstadodeCuentas') }}">Estados de Cuentas</a></li>
+        <li><a href="{{ route('contabilidad.getSumasySaldos') }}">Balance de Sumas y Saldos</a></li>
+        <li><a href="{{ route('contabilidad.getBalanceGenerales') }}">Balance General</a></li>
+        </ul>
         </li>
 
     @endif

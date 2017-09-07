@@ -45,7 +45,7 @@ class TesController extends Controller
     {
         $becas = Beca::paginate(50);
 
-        return view('tesoreria.becas.becas', compact('becas'));
+        return view('cobranzas.tescont.becas', compact('becas'));
     }
 
     public function getAgregarBeca()
@@ -86,7 +86,7 @@ class TesController extends Controller
             ->orderBy('nombres')
             ->paginate(50);
 
-        return view('tesoreria.alumnos.alumnos', compact('alumnos'));
+        return view('cobranzas.tescont.alumnos', compact('alumnos'));
     }
 
     public function getAgregarAlumno()

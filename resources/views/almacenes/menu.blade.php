@@ -27,8 +27,8 @@
                 <span>Articulos</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="{{ route('almacen.getArticulos') }}">Ver Articulos</a></li>
                 <li><a href="{{ route('almacen.getAgregarArticulo') }}">Agregar Articulos</a></li>
+                <li><a href="{{ route('almacen.getArticulos') }}">Ver Articulos</a></li>
             </ul>
         </li>
         <li class="has-sub">
@@ -38,8 +38,8 @@
                 <span>Proveedores</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="{{ route('almacen.getProveedores') }}">Ver Proveedores</a></li>
                 <li><a href="{{ route('almacen.getAgregarProveedor') }}">Agregar Proveedores</a></li>
+                <li><a href="{{ route('almacen.getProveedores') }}">Ver Proveedores</a></li>
             </ul>
         </li>
         <li class="has-sub">
@@ -73,8 +73,10 @@
                 {{--<li><a href="index_v2.html">Borrar Solicitud</a></li>--}}
             {{--</ul>--}}
         {{--</li>--}}
-        <li class="has-sub">
-            <a href="javascript:;">
+       {{--<li class="has-sub">--}}
+
+
+    <!-- <a href="javascript:;">
                 <b class="caret pull-right"></b>
                 <i class="fa fa-users"></i>
                 <span>Reportes</span>
@@ -86,7 +88,7 @@
         </li>
         <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
         <!-- end sidebar minify button -->
-    </ul>
+    {{--</ul>--}}
 @endif
 
 @if(\Illuminate\Support\Facades\Auth::user()->rol->rol == 'usuario')

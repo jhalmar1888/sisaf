@@ -13,7 +13,7 @@
 @endsection
 
 @section('subtitulo')
-    <h1 class="page-header">Agregar Registro al Comprobante de Ingresos</h1>
+    <h1 class="page-header">Agregar Registro al Comprobante de Traspasos</h1>
 @endsection
 
 @section('contenido')
@@ -26,7 +26,7 @@
                 </div>
                 @include('partials.errors')
                 <div class="panel-body panel-form">
-                    {{ Form::open(['route' => 'contabilidad.postAgregarDetalleCI', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
+                    {{ Form::open(['route' => 'contabilidad.postAgregarDetalleCT', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
                     {{ Form::hidden('id_comprobante', $comprobante->id) }}
 
                     <div class="form-group">

@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('titulopagina')
-    <h4>Sistema Financiero Administrativo Tesoreria</h4>
+    <h4>Sistema Financiero Administrativo Tesoreria-Cobranzakkkkkkkkkkkkks</h4>
 @endsection
 
 @section('rutas')

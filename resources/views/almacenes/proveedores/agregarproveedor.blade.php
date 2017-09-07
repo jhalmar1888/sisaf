@@ -25,6 +25,7 @@
                     <h4 class="panel-title">Datos del Proveedor</h4>
                 </div>
                 @include('partials.errors')
+
                 <div class="panel-body panel-form">
                     {{ Form::open(['route' => 'almacen.postAgregarProveedor', 'method'  => 'POST', 'class' => 'form-horizontal form-bordered']) }}
 
@@ -34,18 +35,51 @@
                             {{ Form::text('almproveedor', old('almproveedor'), ['class' => 'form-control', 'placeholder' => 'Nombre del Proveedor']) }}
                         </div>
                     </div>
+
                     <div class="form-group">
-                        {{ Form::label('almdireccion', 'Direccion:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        {{ Form::label('almproveedor', 'Direccion:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('almdireccion', old('almdireccion'), ['class' => 'form-control', 'placeholder' => 'Direccion del Proveedor']) }}
+                            {{ Form::text('almdireccion', old('almdireccion'), ['class' => 'form-control', 'placeholder' => 'Ingrese su Direccion']) }}
                         </div>
                     </div>
+
                     <div class="form-group">
-                        {{ Form::label('almtelefono', 'Telefono:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                    {{ Form::label('almproveedor', 'Telefono:', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">
-                            {{ Form::text('almtelefono', old('almtelefono'), ['class' => 'form-control', 'placeholder' => 'Telefono del Proveedor']) }}
+                            {{ Form::text('almtelefono', old('almtelefono'), ['class' => 'form-control', 'placeholder' => 'Numero de Telefono']) }}
                         </div>
                     </div>
+
+
+
+                    <div class="form-group">
+                        {{ Form::label('almproveedor', 'Empresa:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almempresa', old('almempresa'), ['class' => 'form-control', 'placeholder' => 'Ingrese su Direccion']) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('almproveedor', 'NIT:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almnit', old('almnit'), ['class' => 'form-control', 'placeholder' => 'Ingrese su Direccion']) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('almproveedor', 'E-Mail:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almemail', old('almemail'), ['class' => 'form-control', 'placeholder' => 'Ingrese su Direccion']) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('almproveedor', 'Descripción:', ['class' => 'control-label col-md-4 col-sm-4']) }}
+                        <div class="col-md-6 col-sm-6">
+                            {{ Form::text('almdescripcion', old('almdescripcion'), ['class' => 'form-control', 'placeholder' => 'Ingrese su Direccion']) }}
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         {{ Form::label('', '', ['class' => 'control-label col-md-4 col-sm-4']) }}
                         <div class="col-md-6 col-sm-6">

@@ -12,16 +12,16 @@ class TipoUnidadesSeeder extends Seeder
     public function run()
     {
         factory(\App\Entities\TipoUnidad::Class)->create([
-            'tipo' =>'Pieza'
+            'tipo' =>'Pieza',
         ]);
         factory(\App\Entities\TipoUnidad::Class)->create([
-            'tipo' =>'Litro'
+            'tipo' =>'Litro',
         ]);
         factory(\App\Entities\TipoUnidad::Class)->create([
-            'tipo' =>'Kilo'
+            'tipo' =>'Kilo',
         ]);
         factory(\App\Entities\TipoUnidad::Class)->create([
-            'tipo' =>'Gramos'
+            'tipo' =>'Gramos',
         ]);
 
     }
