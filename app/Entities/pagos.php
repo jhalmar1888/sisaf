@@ -9,6 +9,11 @@ class pagos extends Model
     protected $table='pagos';
     public $timestamps = false;
 
+//    public function unidades()
+//    {
+//        return $this->belongsTo(unidades::class, 'id_unidad', 'id');
+//    }
+
     public function getMonedasAttribute()
     {
         if ($this->nivel == 1) return 'Bolivianos';

@@ -41,32 +41,6 @@ class TesController extends Controller
         return redirect()->route('tes.getCarreras');
     }
 
-    public function getModificarCurso($id_curso)
-    {
-        $cursos = cursos::findOrFail($id_curso);
-        $carreras = Carrera::pluck('carrera', 'id');
-        return view('tesoreria.cursos.modificarcursos', compact('cursos', 'carreras'));
-    }
-
-    public function postModificarCurso(Request $request)
-    {
-        $this->validate($request, [
-            'tescodigo'                     => 'required',
-            'tesdescripcion'                => 'required',
-            'tesid_carrera'                 => 'required'
-        ]);
-
-        $cursos = cursos::findOrFail($request->id);
-        $cursos->codigo = $request->tescodigo;
-        $cursos->descripcion = $request->tesdescripcion;
-        $cursos->id_carrera = $request->tesid_carrera;
-        $cursos->save();
-
-        Alert::message('Curso modificado exitósamnte', 'success');
-
-        return redirect()->route('tes.getCursos');
-    }
-
     public function getBecas()
     {
         $becas = Beca::paginate(50);
@@ -235,6 +209,50 @@ class TesController extends Controller
 
         return redirect()->route('tes.getPagos');
     }
+//    public function getModificarPago($id_pago)
+//    {
+//        $pagos = pagos::findOrFail($id_pago);
+//        $unidades = unidades::pluck('unidad', 'id');
+//        return view('tesoreria.pagos.modificarpagos', compact('pagos', 'unidades'));
+//    }
+//
+//    public function postModificarPagos(Request $request)
+//    {
+//        $this->validate($request, [
+//            'tescodigo'              => 'required',
+//            'tesdescripcion'         => 'required',
+//            'tesunidad_academica'    => 'required',
+//            'tesmonto'               => 'required',
+//            'tesmoneda'              => 'required',
+//            'tesnivel'               => 'required',
+//            'tescontrol_pago'        => 'required',
+//            'tesaplica_beca'         => 'required',
+//            'tesaplica_cantidad'     => 'required',
+//            'tesaplica_multa'        => 'required',
+//            'tesrubro'               => 'required',
+//            'tescategoria_programatica'=> 'required',
+//
+//        ]);
+//
+//        $pagos = pagos::findOrFail($request->id);
+//        $pagos->codigo = $request->tescodigo;
+//        $pagos->descripcion = $request->tesdescripcion;
+//        $pagos->unidad_academica = $request->tesunidad_academica;
+//        $pagos->monto = $request->tesmonto;
+//        $pagos->moneda = $request->tesmoneda;
+//        $pagos->nivel = $request->tesnivel;
+//        $pagos->control_pago = $request->tescontrol_pago;
+//        $pagos->aplica_beca = $request->tesaplica_beca;
+//        $pagos->aplica_cantidad = $request->tesaplica_cantidad;
+//        $pagos->aplica_multa = $request->tesaplica_multa;
+//        $pagos->rubro = $request->tesrubro;
+//        $pagos->categoria_programatica = $request->tescategoria_programatica;
+//        $pagos->save();
+//
+//        Alert::message('Pago modificado exitósamnte', 'success');
+//
+//        return redirect()->route('tes.getPagos');
+//    }
 
     public function getAgregarCursos()
     {
@@ -266,6 +284,31 @@ class TesController extends Controller
         $cursos = cursos::paginate(50);
 
         return view('tesoreria.cursos.cursos', compact('cursos'));
+    }
+    public function getModificarCurso($id_curso)
+    {
+        $cursos = cursos::findOrFail($id_curso);
+        $carreras = Carrera::pluck('carrera', 'id');
+        return view('tesoreria.cursos.modificarcursos', compact('cursos', 'carreras'));
+    }
+
+    public function postModificarCurso(Request $request)
+    {
+        $this->validate($request, [
+            'tescodigo'                     => 'required',
+            'tesdescripcion'                => 'required',
+            'tesid_carrera'                 => 'required'
+        ]);
+
+        $cursos = cursos::findOrFail($request->id);
+        $cursos->codigo = $request->tescodigo;
+        $cursos->descripcion = $request->tesdescripcion;
+        $cursos->id_carrera = $request->tesid_carrera;
+        $cursos->save();
+
+        Alert::message('Curso modificado exitósamnte', 'success');
+
+        return redirect()->route('tes.getCursos');
     }
 
 }

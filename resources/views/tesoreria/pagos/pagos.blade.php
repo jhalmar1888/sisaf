@@ -58,9 +58,9 @@
                             <td>{{ $pago->aplica_becas }} </td>
                             <td>{{ $pago->aplica_cantidads }} </td>
                             <td>{{ $pago->aplica_multas }} </td>
-                            <td>{{ number_format($pago->rubro, 2, ',','.') }}</td>
-                            <td>{{ number_format($pago->categoria_programatica, 2, ',','.') }}</td>
-                            {{--<td><a href="#">Modificar</a></td>--}}
+                            <td>{{ $pago->rubro }}</td>
+                            <td>{{ $pago->categoria_programatica }}</td>
+                            {{--<td><a href="{{ route('tes.getModificarPagos', $pagos->id) }}">Modificar</a></td>--}}
                             {{--<td><a href="#">Eliminar</a></td>--}}
                             </tr>
                         @endforeach

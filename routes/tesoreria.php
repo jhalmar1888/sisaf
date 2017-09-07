@@ -74,7 +74,15 @@ Route::post('agregar-pagos', [
     'uses'  => 'TesController@postAgregarPagos',
     'as'    => 'tes.postAgregarPagos'
 ]);
-
+//Route::get('modificar-pagos/{id_pago}', [
+//    'uses'  => 'TesController@getModificarPago',
+//    'as'    => 'tes.getModificarPago'
+//]);
+//
+//Route::post('modificar-pagos', [
+//    'uses'  => 'TesController@postModificarPago',
+//    'as'    => 'tes.postModificarPago'
+//]);
 Route::get('cursos', [
     'uses'  => 'TesController@getCursos',
     'as'    => 'tes.getCursos'
